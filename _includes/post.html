@@ -1,6 +1,11 @@
-<h1>{{ page.title }}</h1>
-<p class="meta">{{ page.date | date_to_string }}</p>
+<h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a>
+<p class="small">
+  <span><i class="fa fa-calendar"></i> {{ page.date | date_to_long_string }}</span>
+  <span class="tags"><i class="fa fa-tags"></i> {{ page.categories | array_to_sentence_string }}</span>
 
-<article class="post">
+</p>
+</h1>
+
+<div class="post-content">
 {{ content }}
-</article>
+</div>
