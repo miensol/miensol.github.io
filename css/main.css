@@ -102,16 +102,3 @@ blockquote {
   border-left-color: #2a6496;
   background-color: #eee;
 }
-.lineno {
-margin-left: -9px;
-padding-left: 5px;
-border-right: 1px solid #ddd;
-padding-right: 5px;
-display: inline-block;
--webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-}
