@@ -17,24 +17,22 @@ author:
     url: "https://plus.google.com/117451536189361867209?rel=author"
     image: "//lh3.googleusercontent.com/-6M7kaKrVJcU/AAAAAAAAAAI/AAAAAAAAAGE/QI7pFI1vNEA/s512-c/photo.jpg"
 ---
-<p>Creating a simple http proxy in node.js is super easy thanks to an excellent module – <a href="https://github.com/nodejitsu/node-http-proxy" target="_blank">http-proxy</a>. With only the following code you’ll have a proxy that can be used as system or
+<p>Creating a simple http proxy in node.js is super easy thanks to an excellent module – <a href="https://github.com/nodejitsu/node-http-proxy" target="_blank">http-proxy</a>.
+  With only the following code you’ll have a proxy that can be used as system or
   browser level proxy:</p>
 {% highlight javascript %}
-
 var httpProxy = require('http-proxy');
 var proxyServer = httpProxy.createServer(function (req,res,proxy) {
-	var hostNameHeader = req.headers.host,
-	hostAndPort = hostNameHeader.split(':'),
-	host = hostAndPort[0],
-	port = parseInt(hostAndPort[1]) || 80;
-	proxy.proxyRequest(req,res, {
-		host: host,
-		port: port
-	});
+  var hostNameHeader = req.headers.host,
+  hostAndPort = hostNameHeader.split(':'),
+  host = hostAndPort[0],
+  port = parseInt(hostAndPort[1]) || 80;
+  proxy.proxyRequest(req,res, {
+    host: host,
+    port: port
+  });
 });
-
 proxyServer.listen(8888);
-
 {% endhighlight %}
 
 <h2>Adding support for HTTPS</h2>
@@ -63,7 +61,6 @@ echo &quot;Generated proxy-mirror.crt&quot;
 <p>http-proxy module supports various https configuration for example passing traffic from https to http and vice versa. Unfortunately I couldn’t find a way to get it working without preconfiguring target host and port – which was a problem while I was implementing
   <a
   href="https://github.com/miensol/proxy-mirror" target="_blank">proxy-mirror</a>. Here is what <em>curl</em>will print out when trying to use such proxy:</p>
-
 {% highlight bash %}
 curl -vk --proxy https://localhost:8888/ https://pl-pl.facebook.com/
 * timeout on name lookup is not supported
@@ -83,50 +80,50 @@ curl -vk --proxy https://localhost:8888/ https://pl-pl.facebook.com/
   to <em><a href="http://nodejs.org/api/http.html#http_event_connect" target="_blank">CONNECT</a>    </em>event on http server, establish socket connection to a fake https server listening on different port. When the https connection is established the
   fake https server handler proxies requests further. The advantage of this approach is that we can use the same proxy address for both http and https. Here is the code:</p>
 {% highlight javascript %}
-	var httpProxy = require('http-proxy'),
+  var httpProxy = require('http-proxy'),
     fs = require('fs'),
     https = require('https'),
     net = require('net'),
     httpsOptions = {
-	    key: fs.readFileSync('proxy-mirror.key', 'utf8'),
-	    cert: fs.readFileSync('proxy-mirror.crt', 'utf8')
+      key: fs.readFileSync('proxy-mirror.key', 'utf8'),
+      cert: fs.readFileSync('proxy-mirror.crt', 'utf8')
     };
 
     var proxyServer = httpProxy.createServer(function (req, res, proxy) {
-	    console.log('will proxy request', req.url);
-	    var hostNameHeader = req.headers.host,
-	    hostAndPort = hostNameHeader.split(':'),
-	    host = hostAndPort[0],
-	    port = parseInt(hostAndPort[1]) || 80;
-	    proxy.proxyRequest(req, res, {
-		    host: host,
-		    port: port
-	    });
+      console.log('will proxy request', req.url);
+      var hostNameHeader = req.headers.host,
+      hostAndPort = hostNameHeader.split(':'),
+      host = hostAndPort[0],
+      port = parseInt(hostAndPort[1]) || 80;
+      proxy.proxyRequest(req, res, {
+        host: host,
+        port: port
+      });
     });
 
     proxyServer.addListener('connect', function (request, socketRequest, bodyhead) {
-	    var srvSocket = net.connect(8889, 'localhost', function () {
-		    socketRequest.write('HTTP/1.1 200 Connection Established\r\n\r\n');
-		    srvSocket.write(bodyhead);
-		    srvSocket.pipe(socketRequest);
-		    socketRequest.pipe(srvSocket);
-	    });
+      var srvSocket = net.connect(8889, 'localhost', function () {
+        socketRequest.write('HTTP/1.1 200 Connection Established\r\n\r\n');
+        srvSocket.write(bodyhead);
+        srvSocket.pipe(socketRequest);
+        socketRequest.pipe(srvSocket);
+      });
     });
 
     var fakeHttps = https.createServer(httpsOptions, function (req, res) {
-	    var hostNameHeader = req.headers.host,
-	    hostAndPort = hostNameHeader.split(':'),
-	    host = hostAndPort[0],
-	    port = parseInt(hostAndPort[1]) || 443;
+      var hostNameHeader = req.headers.host,
+      hostAndPort = hostNameHeader.split(':'),
+      host = hostAndPort[0],
+      port = parseInt(hostAndPort[1]) || 443;
 
-	    proxyServer.proxy.proxyRequest(req, res, {
-		    host: host,
-		    port: port,
-		    changeOrigin: true,
-		    target: {
-		    	https: true
-		    }
-	    });
+      proxyServer.proxy.proxyRequest(req, res, {
+        host: host,
+        port: port,
+        changeOrigin: true,
+        target: {
+          https: true
+        }
+      });
     });
 
     proxyServer.listen(8888);

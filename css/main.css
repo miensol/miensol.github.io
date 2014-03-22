@@ -66,6 +66,7 @@ h1.title {
   font-family: 'Roboto-Bold', sans-serif;
 }
 h1.title .small {
+  margin-top: 5px;
   font-family:'Roboto', sans-serif;
   font-size: 30%;
 }
