@@ -2,7 +2,8 @@
   font-size: 0.5em;
   /* line-height: 0.5; */
 }
-.footer, .about-info,.footer a, .about-info a {
+
+.footer, .about-info, .footer a, .about-info a {
   color: #ddd;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
   text-decoration: none;
@@ -101,4 +102,25 @@ h1.title a:hover, h1.title a:focus {
 blockquote {
   border-left-color: #2a6496;
   background-color: #eee;
+}
+.lineno {
+  user-select:none;
+  display:inline-block;
+  margin-left: -9px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-right: 1px solid #ddd;
+}
+code {
+  color: #333;
+  background-color: #f8f8f8;
+}
+.header {
+  margin-bottom: 30px;
+}
+@media (min-width: 992px) {
+  .header {
+    position: fixed;
+    width: 23%;
+  }
 }
