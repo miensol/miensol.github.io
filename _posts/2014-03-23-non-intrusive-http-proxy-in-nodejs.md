@@ -2,6 +2,7 @@
 title: "Nonintrusive http proxy in nodejs"
 layout: "post"
 categories: [nodejs, http, proxy]
+permalink: "/2014/03/23/nonintrusive-http-proxy-in-nodejs.html"
 ---
 
 I my previous posts I wrote about problems that might occur when

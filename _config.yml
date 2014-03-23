@@ -3,5 +3,6 @@ safe: true
 lsi: false
 markdown: redcarpet
 pygments: true
+paginate: 5
 lcb: "{"
 rcb: "}"

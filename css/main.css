@@ -124,3 +124,6 @@ code {
     width: 23%;
   }
 }
+.pagination {
+  display: block;
+}
