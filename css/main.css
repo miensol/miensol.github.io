@@ -1,6 +1,7 @@
 .about-info small {
   font-size: 0.5em;
-  /* line-height: 0.5; */
+  padding-top: 5px;
+  display: block;
 }
 
 .footer, .about-info, .footer a, .about-info a {
@@ -118,12 +119,51 @@ code {
 .header {
   margin-bottom: 30px;
 }
+
+.pagination {
+  display: block;
+}
+.me {
+  color: #999;
+}
+.me .twitter-icon, .me .github-icon {
+  width: 35px;
+  height: 32px;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.me a i {
+  -webkit-transition: all .4s ease;
+}
+.me a + a {
+  margin-left: 20px;
+}
+.fa-rss-square {
+  color: #cf5d0f;
+}
+.fa-rss-square:hover {
+  color: #ef7522;
+}
+.me {
+  display: none;
+}
 @media (min-width: 992px) {
   .header {
     position: fixed;
     width: 23%;
+    z-index: 1;
+    text-align: right;
   }
-}
-.pagination {
-  display: block;
+  .me {
+    display: block;
+  }
+  .me img {
+    display: block;
+    margin-left: -20px;
+    margin-bottom: 30px;
+    background: #333;
+    box-shadow:  0 0 3px 3px rgb(252, 250, 250);
+  }
 }

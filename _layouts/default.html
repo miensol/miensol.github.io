@@ -29,9 +29,13 @@
         <div class="header">
           <h1>
             <a href="/">{{ site.name }}</a>
-            <small>on software, technology and programming.</small>
+            <small>{{ site.description }}</small>
           </h1>
-          <p>
+          <p class="me">
+            <img src="/images/me.jpg" alt="me" class="img-circle"/>
+            <a href="/feed.xml"><i class="fa fa-3x fa-rss-square"></i></a>
+            <a href="https://twitter.com/miensol" rel="me"><i class="twitter-icon"></i></a>
+            <a href="https://github.com/miensol" rel="me"><i class="github-icon"></i></a>
           </p>
         </div>
       </section>
@@ -53,7 +57,7 @@
     </div>
     <div class="license">
       <p>
-        Copyright © 2014 - Piotr Mionskowski Blog content licensed under the Creative Commons <a href="http://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a>
+        {{site.copyRights}} <a href="http://creativecommons.org/licenses/by/2.5/">CC BY 2.5</a>
       </p>
     </div>
   </div>
