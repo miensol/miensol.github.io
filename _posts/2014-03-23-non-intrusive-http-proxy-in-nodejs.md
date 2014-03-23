@@ -1,5 +1,5 @@
 ---
-title: "Non intrusive http proxy in nodejs"
+title: "Nonintrusive http proxy in nodejs"
 layout: "post"
 categories: [nodejs, http, proxy]
 ---
@@ -14,7 +14,8 @@ the `pipe` function takes a lot of burden away - whereas previously
 it had to be carefully handled by programmer.
 As a first step let's use a simple socket server and tunnel http requests
 through it:
-``` javascript
+
+```javascript
 var net = require('net');
 var stdout = process.stdout;
 var server = net.createServer(function(clientSocket){
@@ -30,6 +31,7 @@ var server = net.createServer(function(clientSocket){
 });
 server.listen(9000);
 ```
+
 The above code creates a socket server listening on port `9000`.
 When it gets a connection from client it will immediately try to
 connect to other server listening on port `8888` - this is a port
@@ -42,9 +44,11 @@ of `pipe` calls.
 
 With that we can already use `curl` to see raw http traffic written
 directly to standard output.
-``` bash
+
+```bash
 curl http://wp.pl/ --proxy http://localhost:9000/
 ```
+
 ##Creating http proxy on network level
 The above example albeit simple doesn't really provide any value as
 we still need a *external* proxy to properly pass http traffic.
@@ -60,6 +64,7 @@ enough examples of how to use it. With existing parser
 instance the only thing left to do is to extract `Host` header
 value, use it to connect to target server. Here is a core part
 of code required:
+
 ```javascript
 net.createServer(function (socketRequest) {
     var requestParser = HttpParsingStream.createForRequest(socketRequest);
@@ -94,6 +99,7 @@ net.createServer(function (socketRequest) {
 
 }).listen(9000);
 ```
+
 The above code makes use of `HttpParsingStream` which is a hand
 rolled writable `Stream` that uses node.js http parser to emit
 events. As you can see we first pipe client socket to `requestParser`
@@ -109,6 +115,7 @@ http implementations.
 ## HttpParsingStream explained
 The above example relies on 2 instances of `HttpParsingStream`
 for request and response respectively:
+
 ```javascript
 var net = require('net'),
     http = require('http'),
@@ -165,12 +172,16 @@ var HttpParsingStream = function (options) {
 };
 util.inherits(HttpParsingStream, Writable);
 ```
+
 The `HttpParsingStream` accepts 2 options:
+
 - `socket` for underlying request and response
 - `parserMode` used to properly initialise node.js http parser
 
 Here's how we create objects with it:
+
 ```javascript
+
 HttpParsingStream.createForRequest = function (socket) {
     return new HttpParsingStream({
         socket: socket,
@@ -188,17 +199,21 @@ HttpParsingStream.createForResponse = function (socket) {
     });
 };
 ```
+
 Because `HttpParsingStream` is a `Writable` stream we can
 use it as:
+
 ```javascript
 socketRequest.pipe(HttpParsingStream.createForRequest(socketRequest));
 
 serverSocket.pipe(HttpParsingStream.createForResponse(serverSocket));
 ```
+
 and let node.js code handle buffering, pausing and resuming.
 There is also one additional function used to clean up and return
 a parser instance back to pool - it's a copy paste from node.js
 http module source code:
+
 ```javascript
 function freeParser(parser, req) {
     if (parser) {
@@ -219,6 +234,7 @@ function freeParser(parser, req) {
     }
 }
 ```
+
 ## Why create yet another http proxy implementation?
 proxy-mirror a simple http debugging tool that I wrote
 so far relies on an excellent http-proxy module.
@@ -236,4 +252,4 @@ to improper implementations of HTTP protocol.
 
 I haven't yet checked how the above code handles WebSocket
 connections - I'll explore that in a next post. For the referece
-you can find full code in this [gist](http://gist).
+you can find full code in this [gist](https://gist.github.com/9726643).

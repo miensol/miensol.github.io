@@ -1,4 +1,6 @@
 name: Coder Thoughts
+safe: true
+lsi: false
 markdown: redcarpet
 pygments: true
 lcb: "{"
