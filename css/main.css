@@ -77,8 +77,8 @@ h1.title .small span + span {
 }
 h1.title a {
   color: #111;
-  -webkit-transition: all 1s ease;
-  transition: all .4s ease;
+  -webkit-transition: color 1s ease;
+  transition: color .4s ease;
   text-decoration:none;
 }
 h1.title a:hover, h1.title a:focus {
@@ -136,6 +136,7 @@ code {
 }
 .me a i {
   -webkit-transition: all .4s ease;
+  transition: all .4s ease;
 }
 .me a + a {
   margin-left: 20px;
@@ -152,9 +153,15 @@ code {
 @media (min-width: 992px) {
   .header {
     position: fixed;
-    width: 23%;
+    width: 25%;
+    left: 75%;
+    margin-right: 15px;
     z-index: 1;
     text-align: right;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   .me {
     display: block;
