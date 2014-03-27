@@ -88,6 +88,13 @@ h1.title a:hover, h1.title a:focus {
   border-bottom: 2px solid rgba(1,1,1,0.1);
   padding-bottom: 3px;
 }
+
+@media (min-width: 768px) {
+  .post {
+    padding: 30px;
+  }
+}
+
 .post {
   padding-bottom: 80px;
 }
@@ -95,12 +102,6 @@ h1.title a:hover, h1.title a:focus {
   border-top: 1px solid #ddd;
   padding-top: 30px;
 }
-@media (min-width: 768px) {
-  .post {
-    padding: 30px;
-  }
-}
-
 .post-content {
   font-size: 17px;
   line-height: 1.7;
