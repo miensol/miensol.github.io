@@ -89,13 +89,18 @@ h1.title a:hover, h1.title a:focus {
   padding-bottom: 3px;
 }
 .post {
-  padding: 30px;
   padding-bottom: 80px;
 }
 .post + .post {
   border-top: 1px solid #ddd;
   padding-top: 30px;
 }
+@media (min-width: 768px) {
+  .post {
+    padding: 30px;
+  }
+}
+
 .post-content {
   font-size: 17px;
   line-height: 1.7;
