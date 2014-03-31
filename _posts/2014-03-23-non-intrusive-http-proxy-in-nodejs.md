@@ -7,8 +7,8 @@ permalink: "/2014/03/23/nonintrusive-http-proxy-in-nodejs.html"
 
 I my previous posts I wrote about problems that might occur when
 using http proxy written in nodejs to debug http issues.
-Today I'm going to describe how to use nodejs builtin parser to
-to overcome these problems.
+Today I'm going to describe how to use nodejs builtin parser to 
+overcome these problems.
 ##Nodejs streams
 Node.js has decent support for handling streams. Especially
 the `pipe` function takes a lot of burden away - whereas previously
