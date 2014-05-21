@@ -174,11 +174,19 @@ code {
   .me {
     display: block;
   }
-  .me img {
+  .me .img-circle {
     display: block;
+    position: relative;
     margin-left: -20px;
     margin-bottom: 30px;
     background: #333;
+    background-image: url(../images/me.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 120px;
     box-shadow:  0 0 3px 3px rgb(252, 250, 250);
-  }
+  
+    /* right: 11%; */
+}
 }
