@@ -12,9 +12,11 @@ Click handler triggered an http POST to server which creates a row in table - no
 I've quickly googled to find out what others are doing in such scenario and found at least couple of ways of handling it - some of them I have considered while others where completely new to me.
 ### Disable button
 The most simple approach is to use `ng-disabled` on the same button as `ng-click` directive. Which would look like this:
+
 ```html
 <button ng-click="executePost()" ng-disabled="buttonDisabled">Click me</button>
 ```
+
 ```javascript
 $scope.executePost = function(){
   $scope.buttonDisabled = true;
@@ -25,6 +27,7 @@ $scope.executePost = function(){
   })
 };
 ```
+
 As you can see the code is pretty straight forward especially when you make use of angularjs promise api provided by `$q` service.
 
 ### Stop relying on the result of asynchronous action
@@ -40,6 +43,7 @@ An approach I haven't thought about is to actually prevent second request that l
 
 ### Further usage
 Every web developer out there has probably implemented an ajax throbber of some kind. In Angularjs world most of the examples I see are very similar to our button blocking with `isDisabled` flag. Usually it will mean something along these lines:
+
 ```javascript
 $scope.executePost = function(){
   $scope.showThrobber = true;
@@ -48,7 +52,9 @@ $scope.executePost = function(){
   })
 };
 ```
+
 ```html
 <div class="ajax-thorbber" ng-show="showThrobber"></div>
 ```
+
 While there is nothing wrong in particular with this example I find handling those flags in a controller rather tedious. As with the `bi-click` example one can very easily create a directive to handle throbber toggling in one place.
