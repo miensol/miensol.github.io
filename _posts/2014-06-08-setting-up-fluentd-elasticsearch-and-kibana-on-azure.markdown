@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Setting up fluentd elasticsearch and Kibana on azure"
-date: 2014-06-01
+date: 2014-06-08
 categories: [fluentd, kibana, elasticsearch]
 ---
 
@@ -13,10 +13,10 @@ Fortunately there are services like [Splunk](http://www.splunk.com/), [Loggly](h
 
 I was searching once for a free alternative that I could quickly get up and running in our test environment where we had 10+ machines running 20+ web sites or services that we're all part of a single product. That's when I found out about [Kibana](http://www.elasticsearch.org/overview/kibana/), [logstash](http://logstash.net/)  and how they make use of [elasticsearch](http://www.elasticsearch.org/).
 
-Back then I considered using [fluentd](http://fluentd.org/) isntead of logstash however most of the machines we're running windows and that's not where fluentd shines. Nowdays I'm using linux vm mostly that's why I decided to use fluentd.
+Back then I considered using [fluentd](http://fluentd.org/) instead of logstash however most of the machines we were running windows and that is not where fluentd shines. Nowadays I'm using linux vm mostly that's why I decided to use fluentd.
 
 ## Setup a vm for elasticsearch
-We need a machine that will store our aggregated log entries so let's create one using [Azure Cross-Platform Command-Line interface](http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/). After installing it with `npm install azure-cli -g` we need to introduce ourself to it. The simples way to do this is to issue `azure account download` which will open a browser to download your profile:
+We need a machine that will store our aggregated log entries so let's create one using [Azure Cross-Platform Command-Line interface](http://azure.microsoft.com/en-us/documentation/articles/xplat-cli/). After installing it with `npm install azure-cli -g` we need to introduce ourself to it. The simplest way to do this is to issue `azure account download` which will open a browser to download your profile:
 <img src='/images/azure_account_download.png'>
 After that you'll need to import the downloaded file with `npm account import /path/to/your/credentials.publishsettings`.
 
@@ -32,7 +32,7 @@ data:    b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-2014041
 data:    b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04-LTS-amd64-server-20140528-en-us-30GB                                   Public    Linux  
 ```
 
-The last one looks like most recent so we'll used that. Next we need to create a virtual machine. We can use either password authentication (which isn't recommended) or a ssh certificate authorization. To use the latter we need to create a certificate key pair first. Openssl command line tool will do it for us:
+The last one looks like most recent so we'll used that. Next we need to create a virtual machine. We can use either password authentication (which isn't recommended) or a ssh certificate. To use the latter we need to create a certificate key pair first. Openssl command line tool will do it for us:
 
 ```bash
 openssl req -x509 -nodes -days 730 -newkey rsa:2048 -keyout ~/.ssh/mymachine.key -out ~/.ssh/mymachine.pem
@@ -88,7 +88,7 @@ We also need to open port for elasticsearch:
 azure vm endpoint create --endpoint-name elasticsearch machine-dns-name 9200 9200
 ```
 
-We only wan't our machines to be able to push logs to elasticsearch that's why we need to add ACL rules to the enpoint we created above. Unfortunately I couldn't find a way to do this through CLI interface so we need to resort to [web interface](https://manage.windowsazure.com/).
+We only wan't our machines to be able to push logs to elasticsearch that's why we need to add ACL rules to the endpoint we created above. Unfortunately I couldn't find a way to do this through CLI interface so we need to resort to [web interface](https://manage.windowsazure.com/).
 
 ## Install Kibana
 Kibana is a web application designed to perform elasticsearch searches and display them using neat interface. It communicates with elasticsearch directly that's why it's not really suited to be deployed to publicly accessible place. Fortunately there is [kibana-proxy](https://github.com/hmalphettes/kibana-proxy) which provides authentication on top of it. To run kibana-proxy we'll need node.js let's install both of them:
