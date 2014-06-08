@@ -146,17 +146,29 @@ code {
   background-position: center;
 }
 .me a i {
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
+  -webkit-transition: all .4s linear;
+  transition: all .4s linear;
 }
 .me a + a {
   margin-left: 20px;
 }
 .fa-rss-square {
-  color: #cf5d0f;
+  color: rgba(241, 109, 34, 0.8);
 }
 .fa-rss-square:hover {
   color: #ef7522;
+}
+.fa-twitter {
+  color: rgba(87, 183, 239, 0.8)
+}
+.fa-twitter:hover {
+  color: #55acee
+}
+.fa-github {
+  color: rgba(255, 255, 255, 0.8);
+}
+.fa-github:hover {
+  color: #fff;
 }
 .me {
   display: none;
@@ -183,7 +195,7 @@ code {
     margin-left: -20px;
     margin-bottom: 30px;
     background: #333;
-    background-image: url(../images/me.jpg);
+    /* background-image: url(../images/me.jpg); */
     background-size: 100%;
     background-repeat: no-repeat;
     width: 120px;
@@ -191,6 +203,14 @@ code {
     box-shadow:  0 0 3px 3px rgb(252, 250, 250);
 
     /* right: 11%; */
+  }
+  .about-info {
+    opacity: .6;
+    -webkit-transition: opacity .3s linear;
+    min-height: 800px;
+  }
+  .about-info:hover {
+    opacity: 1;
   }
 }
 
