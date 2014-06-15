@@ -7,6 +7,14 @@ img {
   display: block;
 }
 
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
 .footer, .about-info, .footer a, .about-info a {
   color: #ddd;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
@@ -92,11 +100,6 @@ h1.title a:hover, h1.title a:focus {
   padding-bottom: 3px;
 }
 
-@media (min-width: 768px) {
-  .post {
-    padding: 30px;
-  }
-}
 
 .post {
   padding-bottom: 80px;
@@ -109,6 +112,42 @@ h1.title a:hover, h1.title a:focus {
   font-size: 17px;
   line-height: 1.7;
 }
+.post-content img:first-child {
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+  .post {
+    padding: 30px;
+  }
+  .post-content img:first-child  {
+    float: left;
+    margin-right: 15px;
+  }
+  .post-content img:first-child::after {
+    clear: both;
+  }
+  .post-content p::after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+
 blockquote {
   border-left-color: #2a6496;
   background-color: #eee;
