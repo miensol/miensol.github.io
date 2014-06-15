@@ -4,7 +4,7 @@ title: "Guide to javascript generators"
 date: 2014-06-15
 categories: ['javascript', 'nodejs', 'ES6', 'generators']
 ---
-![Yield sign](images/yield-sign.jpg)
+![Yield sign](/images/yield-sign.jpg)
 For a while now I've been hearing and reading about a new exciting features of ES6 like arrow functions, array comprehensions, classes, modules, generators and many more. While many of them are easy to understand [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*) can take a while to grok. So I thought it would be a good idea to write some samples to master this particular feature.
 
 ## What are generators
