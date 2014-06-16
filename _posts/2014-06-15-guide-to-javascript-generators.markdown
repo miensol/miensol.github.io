@@ -81,6 +81,10 @@ Why? oracle says:  0.36784305213950574
 Thank you!
 ```
 
+A careful reader will notice that the first question is silently ignored by our *oracle* generator. This is logical although might be strange at first. The generator function body isn't executed until we call `next` for the **first time** - which is like *starting* the generator. The call to `next` will execute function body until it encounters `yield` - the control flow changes and the function is left to be entered later on - on future `next` call. Notice that we there is no logical place to store/assign the value passed to first `next()` call - **a value that we pass to first `next()` call is ignored.**
+
+*Thanks to @NOtherDev for pointing that out*.
+
 ### Generators error handling
 Now that we know how to yield values and receive them inside generators. It's equally important to be able to handle exceptions gracefully. Since generators are executing synchronously semantics of typical `try {} catch {}` should be preseved:
 {% gist miensol/f740e31ccc73283809a5 %}
