@@ -37,10 +37,10 @@ for(var current of fibo()){
 ```
 
 ### Iterators and iterables
-I've mentioned couple of times a word iterator, but what exactly is that? In ES6 iterator is an object that has `next` methods which when called returns and object having 2 properties:
+I've mentioned couple of times a word iterator, but what exactly is that? In ES6 iterator is an object that has `next` method which when called returns and object having 2 properties:
 
 - `value` - which represents value returned by iterator
-- `done` - a boolean indicating whether iterator is one iterating or not
+- `done` - a boolean indicating whether iterator has done it's job or not
 
 As we saw in the above generator examples every generator is an implicit iterator thus we can loop through it using new `for-of` syntax.
 
@@ -140,6 +140,7 @@ Note the `concat` function implementation uses `yield *otherGenerator()` to yiel
 
 ### Simplifying asynchronous operations
 It may as first be a surprise that generators can streamline asynchronous code - how would synchronously executing `yield` help in managing asynchronous calls? If you think of the way we write asynchronous code in most of mainstream languages it typically boils down to either:
+
 - passing a callback function(s) that will be called when the operation completes
 - immediately getting back a promise of result from async function
 - using a library similar to [Reactive Extensions](http://msdn.microsoft.com/pl-pl/data/gg577609.aspx) - that when it comes to asynchronous code somewhat similar in usage to promises but offers very rich API
@@ -160,7 +161,7 @@ power(2,3).then(function(result){
 });
 ```
 
-I immediately translate promise calls in our heads to a more natural flow:
+I immediately translate promise calls in my head to a more natural flow:
 
 ```javascript
 var result = _wait_for_async_ power(2,3);
@@ -168,9 +169,10 @@ console.log(result);
 ```
 
 Now since we don't have `async` feature like the one C# 5 has ([or rather we don't yet have it](http://wiki.ecmascript.org/doku.php?id=strawman:async_functions)) it's not yet possible to achieve this kind of simplification. Still if you think of how the *imaginary* `_wait_for_async_` keyword would work it seems that it (in case of promise based implememntation):
-* would wait for the promise to complete in a non blocking fashion - possibly leaving function execution context
-* when the promise completes it would return to the exact place from where it was *called* and return value that it got from promise or throw an exception
 
-If you think of it it's essentially the way `yield` keyword works - however we still need an umbrella machinery that will  take care of calling generator `next` method so it will return to the original caller as well as it `throw` method to report exceptions.
+*  would wait for the promise to complete in a non blocking fashion - possibly leaving function execution context
+*  when the promise completes it would return to the exact place from where it was *called* and return value that it got from promise or throw an exception
+
+Essentially that's the way `yield` keyword works - however we still need an umbrella machinery that will  take care of calling generator `next` method so it will return to the original caller as well as it `throw` method to report exceptions.
 
 As you may have guessed there are already plenty of implementations of this machinery - the one I like most is [co](https://github.com/visionmedia/co). Take a look at an example from their page and enjoy callback free life!
