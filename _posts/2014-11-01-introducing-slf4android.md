@@ -8,7 +8,7 @@ categories: ["android"]
 Every now and then you have a bug that is hard to reproduce or only happens on certain phones or android versions. The thing that really comes handy in such case is a detailed application log. That's why it's so important to take time to add useful log entries in every non trivial part of the codebase. At the very least you'll want to at least log any errors.
 
 ## Logging frameworks
-That's why it's so important to be able to create log entries easily. The default solution that comes with Android by means of [`Log`](http://developer.android.com/reference/android/util/Log.html) is the most commonly used. However for me it's really  the least pleasent to use:
+That's why it's so important to be able to create log entries easily. The default solution that comes with Android by means of [`Log`](http://developer.android.com/reference/android/util/Log.html) is the most commonly used. However for me it's really  the least pleasant to use:
 
 ```java
 Log.e("MyTag", "Failed to download " + url +  "due to occurred " + ex);
