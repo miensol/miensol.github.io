@@ -8,7 +8,7 @@ categories: ["android"]
 Every now and then you have a bug that is hard to reproduce or only happens on certain phones or android versions. The thing that really comes handy in such case is a detailed application log. That's why it's so important to take time to add useful log entries in every non trivial part of the codebase. At the very minimum you'll want to log any errors.
 
 ## Logging frameworks
-That's why it's so important to be able to create log entries easily. The default solution that comes with Android by means of [`Log`](http://developer.android.com/reference/android/util/Log.html) is the most commonly used. However for me it's really  the least pleasant to use:
+That's why it's so important to create log entries easily. The default solution that comes with Android by means of [`Log`](http://developer.android.com/reference/android/util/Log.html) is the most commonly used. However for me it's really  the least pleasant to use:
 
 ```java
 Log.e("MyTag", "Failed to download " + url +  "due to occurred " + ex);
@@ -26,7 +26,7 @@ Another alternative that is available by default on android is packaged inside `
 
 ```
 
-You're able to use [`MessageFormatter`](http://developer.android.com/reference/java/text/MessageFormat.html) style to format log entries. However no variable argument method overload makes it both harder to read and write. More importantly **by default** if you use above statement the message **will not be printed anywhere**. It's easy to [fix](http://stackoverflow.com/questions/4561345/how-to-configure-java-util-logging-on-android) when you know where to look for.
+You're able to use [`MessageFormatter`](http://developer.android.com/reference/java/text/MessageFormat.html) style to format log entries. However no variable arguments method overload makes it both harder to read and write. More importantly **by default** if you use above statement the message **will not be printed anywhere**. It's easy to [fix](http://stackoverflow.com/questions/4561345/how-to-configure-java-util-logging-on-android) when you know where to look for.
 
 ### Powerful `logback`
 
