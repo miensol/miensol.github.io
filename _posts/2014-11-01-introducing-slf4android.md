@@ -14,7 +14,7 @@ That's why it's so important to be able to create log entries easily. The defaul
 Log.e("MyTag", "Failed to download " + url +  "due to occurred " + ex);
 ```
 
-I really don't like that I have to specify a tag each time I wan't to log something. Moreover having to concatenate strings seems tedious and error prone.
+I really don't like that I have to specify a tag each time I need to log something. Moreover having to concatenate strings seems tedious and error prone.
 
 ### Logging with `java.util.logging`
 Another alternative that is available by default on android is packaged inside `java.util.logging.*`. And here's an example of how to use it:
