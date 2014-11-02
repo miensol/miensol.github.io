@@ -256,3 +256,10 @@ code {
 table.table td {
   padding: 5px;
 }
+
+.gist .line,
+.gist .line-number {
+
+    font-size:14px !important;
+    line-height:25px !important;
+}
