@@ -26,7 +26,7 @@ This will print messages to logcat as well as well as well as make them availabl
 
 ## Using [slf4j](https://github.com/bright/slf4android) with Crashlytics
 
-I've already explained why [I don't like this approach to logging](/2014/11/01/introducing-slf4android.html). Thankfully with [slf4android](https://github.com/bright/slf4android) it's really easy to replace a default logcat appender with a `CrashlyticsLoggerHandler`:
+I've already explained why [I don't like this approach to logging](/introducing-slf4android.html). Thankfully with [slf4android](https://github.com/bright/slf4android) it's really easy to replace a default logcat appender with a `CrashlyticsLoggerHandler`:
 
 ```java
 public class CrashlyticsLoggerHandler extends Handler {
