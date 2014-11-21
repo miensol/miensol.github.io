@@ -11,7 +11,7 @@ As I mentioned in my previous post having meaningful log entries comes handy dur
 
 Error reporting providers are getting more and more popular. There are plenty of options to choose from: [Raygun](https://raygun.io/), [Airbrake](https://airbrake.io/) and [Crashlytics](https://dev.twitter.com/products/crashlytics) are just frew examples. At [Bright Inventions](http://brightinventions.pl/) we use the last one and are more and more pleased with it. Setting it up is really easy - if you don't mind installing an IDE plugin it provides. Frankly I would prefer being able to configure a project with a simple command line tool but I understand a motivation behind it which is making the installation as seamless as possible.
 
-Crashlytics let's you not only report [uncaught exceptions](http://developer.android.com/reference/java/lang/Thread.html#setDefaultUncaughtExceptionHandler(java.lang.Thread.UncaughtExceptionHandler) but also handled errors with additional information provided by log entries:
+Crashlytics let's you not only report [uncaught exceptions](http://developer.android.com/reference/java/lang/Thread.html#setDefaultUncaughtExceptionHandler(java.lang.Thread.UncaughtExceptionHandler)) but also handled errors with additional information provided by log entries:
 
 ```java
 try {
@@ -46,7 +46,6 @@ public class CrashlyticsLoggerHandler extends Handler {
   public void close() {}
   @Override
   public void flush() {}
-  }
 }
 ```
 
@@ -59,3 +58,5 @@ LoggerConfiguration.configuration()
 ```
 
 From now on all log messages will go through Crashlytics API and couple of last log entries will be available next to crash report details in dashboard.
+
+*This article is cross-posted [my company blog](http://blog.brightinventions.pl/)*

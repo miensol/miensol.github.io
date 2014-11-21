@@ -2,6 +2,7 @@
 layout: post
 title: "Introducing slf4android - a simple slf4j implementation for android"
 date: 2014-11-01
+permalink: "introducing-slf4android.html"
 categories: ["android"]
 ---
 
