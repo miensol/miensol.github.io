@@ -1,9 +1,11 @@
 name: Coder Thoughts
 description: on software, technology and programming.
 copyRights: Copyright © 2014 - Piotr Mionskowski Blog content licensed under the Creative Commons
-markdown:    redcarpet
+markdown: redcarpet
+locale: en_US
 highlighter: pygments
 url: http://miensol.pl
 paginate: 5
-lcb: "{"
-rcb: "}"
+encoding: utf-8
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
