@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Google Play Services is no longer a giant monolith"
-date: 2014-12-08 21:00:00
+date: 2014-12-09 10:00:00
 categories: ["android"]
 ---
 
