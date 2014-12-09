@@ -57,4 +57,4 @@ compile 'com.google.android.gms:play-services-base:6.5.87'
  I no longer have to run [Proguard](http://proguard.sourceforge.net/) during development. No wonder my build time just improved by 15 seconds.
 
 
-*This article is cross-posted with [my company blog](blog.brightinventions.pl)*
+*This article is cross-posted with [my company blog](http://blog.brightinventions.pl)*
