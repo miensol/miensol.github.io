@@ -9,7 +9,7 @@ I had to solve a seemingly trivial bug in an angularjs based application that tu
 
 ## The bug
 
-The bug report stated that *"Clicking on a label causes page reload"*. That should be an easy one I though to myself and openeded chrome inspector to see the structure of DOM. Here's a simplified version of markup:
+The bug report stated that *"Clicking on a label causes page reload"*. That should be an easy one I thought to myself and openeded chrome inspector to see a structure of DOM. Here's a simplified version of markup:
 
 ```html
 <a  href="" ng-click="anchorAction($event)" ng-controller="ActionCtrl">
@@ -32,10 +32,10 @@ module.controller('ActionCtrl', function($scope){
 });
 ```
 
-My intention was to have different behaviour when an anchor or span element is clicked. Just as in the example above when an `a` is clicked `anchorAction` should be printed whereas the same event triggered on `span` should **only** print `childAction`.
-Interestingly the actual behaviour of the above example is different.
+My intention was to have different behaviour when an anchor or a span element is clicked. Just as in the example above when `a` is clicked `anchorAction` should be printed whereas the same event triggered on `span` should **only** print `childAction`.
+Interestingly the actual behaviour is different.
 
-When an anchor is clicked indeed a function attached by `ng-click` is executed properly. Note that even though we **did not** call `$event.preventDefault()` a page reload is not triggered. This is due to [`htmlAnchorDirective`](https://github.com/angular/angular.js/blob/master/src/ng/directive/a.js) provided by angularjs which effectively prevents empty `href` attribute from taking action.
+When the anchor is clicked indeed a function attached by `ng-click` is executed properly. Note that even though we **did not** call `$event.preventDefault()` a page reload is not triggered. This is due to [`htmlAnchorDirective`](https://github.com/angular/angular.js/blob/master/src/ng/directive/a.js) provided by angularjs which effectively prevents empty `href` attribute from taking action.
 
 A click on `span` element will stop event from bubbling up document tree - thus preventing `anchorAction` from executing. In addition it will obviously print `childAction` and to my surprise **it will cause a page reload**.
 
@@ -69,7 +69,7 @@ If there is an element e and the click event is not canceled, run post-click act
 If there is an element e and the event is canceled, run canceled activation steps on element e.
 7. Set the click in progress flag on target to false.
 
-The most relevant steps are *4.* and *6.* as they clearly indicate that *target* and *nearest activatable element* that triggers default action can be **seperate**. What's left to have a complete understanding is how *nearest activatable element* is defined:
+The most relevant steps are *4.* and *6.* as they clearly indicate that *target* and *nearest activatable element* that triggers default action can be **separate**. What's left to have a complete understanding is how *nearest activatable element* is defined:
 
 > Given an element target, the nearest activatable element is the element returned by the following algorithm:
 
