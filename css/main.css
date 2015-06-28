@@ -64,7 +64,7 @@ ul.posts {
 }
 body {
   background-color: #333;
-  font-family: 'Roboto', sans-serif
+  font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 .main-content {
   background-color: #fff;
@@ -76,11 +76,9 @@ h1.title {
   font-weight: 800;
   font-size: 50px;
   margin-bottom: 30px;
-  font-family: 'Roboto-Bold', sans-serif;
 }
 h1.title .small {
   margin-top: 5px;
-  font-family:'Roboto', sans-serif;
   font-size: 30%;
 }
 h1.title .small span + span {
@@ -109,8 +107,11 @@ h1.title a:hover, h1.title a:focus {
   padding-top: 30px;
 }
 .post-content {
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.8;
+}
+.post-content p {
+  margin-bottom: 20px;
 }
 .post-content img:first-child {
   padding: 4px;
