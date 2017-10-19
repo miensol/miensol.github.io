@@ -1,4 +1,4 @@
 {% if page.crosspost %}
     {% assign prefix = page.date | date: '%Y-%m-%d' %}
-    <p>This article is cross posted with my <a href="https://brightinventions.pl/blog/{{ page.path | replace: '_posts/', '' | replace: prefix, '' | replace: '.md', '' | replace_first: '-', '' }}">company's blog </a></p>
+    <p>This article is cross posted with my <a href="https://brightinventions.pl/blog/{{ page.path | replace: '_posts/', '' | replace: prefix, '' | replace: '.md', '' | replace_first: '-', '' }}">company's blog</a>.</p>
 {% endif %}
