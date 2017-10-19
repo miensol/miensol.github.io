@@ -44,21 +44,20 @@ target="_blank">transclude</a>. In my opinion directives make working with data-
 of times helps a lot. To demonstrate its power I’ll just say that entire <a href="http://jqueryui.com/" target="_blank">jQuery ui</a> is easily accessible with just one directive. I guess I have to little experience to provide some tips about building directives
 - the most complex one I’ve built was <a href="http://jsfiddle.net/YShcw/1/" target="_blank">paginate</a>. Here is a HTML snippet of how to use it:
 <br />
-{% highlight html %}
+```html
   <div paginate="items">
     <ul>
         <li ng-repeat="item in pager.paged">
-            {{ '{{' }} item.index {{ '}}' }} {{ '{{' }} item.text {{ '}}' }} 
+            {{ item.index }} {{ item.text }} 
         </li>
     </ul>
     <button ng-click="pager.previous()">Previous</button>
     <span ng-repeat="page in pager.pages"
              ng-class="pager.classForPage(page)">
-      <a ng-click="pager.goTo(page)">{{ '{{' }} page {{ '}}' }} </a>
+      <a ng-click="pager.goTo(page)">{{ page }} </a>
     </span>
     <button ng-click="pager.next()">Next</button>
-</div>
-{% endhighlight %}
+```
 <p>Directive is the hardest part to fully understand but if you do learn them and built them in a generic way you can accelerate development a lot.</p>
 <h2>Views</h2>
 <p>I’ve only touched couple of aspects of Angular - there is a lot more to it. In particular I haven’t commented on View part in MVC trio. Angular tends to be criticised for the way it handles views. Mainly because you may get to a stage where it is hard

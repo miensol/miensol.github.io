@@ -29,7 +29,7 @@ author:
   need saving precious network and loading time. Here is how to define a module:
 
 
-{% highlight javascript %}
+```
 var myApp = angular.module('myApp', ['ngResource']);
 
 myApp.factory('itemsStorage', function ($resource) {
@@ -37,7 +37,7 @@ myApp.factory('itemsStorage', function ($resource) {
   // items storage implementation
   return itemsStorage;
 });
-{% endhighlight %}
+```
 We’ve
   declared a new module called <em>myApp </em>and stated that it depends on another module called <em>ngResource</em>. In line 3 we are declaring a factory for <em>itemsStorage</em> that requires <em>$resource</em> service. Angular will automatically resolve <em>$resource</em> service
   and inject it as a value of parameter. As you may suspect under the hood the dependency injection mechanism inspects parameter names of our function and thus it is able to know how to satisfy them with proper values. Be careful when using JavaScript
@@ -45,7 +45,7 @@ We’ve
   definition across couple of files. It is a supported scenario but there are some quirks to it.
 
 
-{% highlight javascript %}
+```
 var myApp = angular.module('myApp');
 
 myApp.directive('timeAgo', function(){
@@ -53,16 +53,16 @@ myApp.directive('timeAgo', function(){
     // timeAgo directive link implmentation
   };
 });
-{% endhighlight %}
+```
 The
   first line says that we would like to retrieve <em>myApp</em> module so that we can extend or use it. This API may be confusing, it was for me, as it may look like we’re actually declaring a module that has no dependencies. The distinction between extending
   and declaring a module has an important ramification. You’re now responsible of loading file with module declaration before files that extend module functionality. In order to declare module with no dependencies you have to pass an empty array as a
   second argument:
 
 
-{% highlight javascript %}
+```
 var secondModule = angular.module('secondModule', []);
-{% endhighlight %}
+```
 
   <h2>A praise of dependency injection</h2>
   <p>Dependency injection is a very useful concept especially in statically typed languages as C# or Java. It really helps you decouple your code as your classes no longer require to know about the implementation details of their dependencies. There are
@@ -81,7 +81,7 @@ var secondModule = angular.module('secondModule', []);
   following code sample.
 
 
-{% highlight javascript linenos %}
+```
 var A = angular.module('A', []);
 
 A.factory('serviceA', function(){
@@ -115,16 +115,16 @@ C.factory('serviceC', function(serviceA){
   console.groupEnd();
  };
 });
-{% endhighlight %}
+```
 
   <p>As you can see we have 3 modules here <em>A, B </em>and<em> C</em>. But in line <em>21</em> inside <em>C</em> module definition we’re declaring <em>serviceA</em>. Since module <em>C</em> depends on <em>A</em> that already defined <em>serviceA</em> we’re actually
     overriding the implementation. It’s quite useful to be able to override and stuff our custom implementation of particular service provided by other module. Except that we have no control over the scope of our modification. In the above example the <em>serviceA</em> defined
     in module <em>C</em> will be the one used everywhere at runtime. Even though module <em>B</em> knows nothing bout <em>C.</em> Calling declared services like this:
-{% highlight javascript %}
+```
 serviceA();
 serviceB();
 serviceC();
-{% endhighlight %}
+```
 Will
     produce following output:
     <div>

@@ -20,7 +20,7 @@ author:
 <p>Creating a simple http proxy in node.js is super easy thanks to an excellent module – <a href="https://github.com/nodejitsu/node-http-proxy" target="_blank">http-proxy</a>.
   With only the following code you’ll have a proxy that can be used as system or
   browser level proxy:</p>
-{% highlight javascript %}
+```
 var httpProxy = require('http-proxy');
 var proxyServer = httpProxy.createServer(function (req,res,proxy) {
   var hostNameHeader = req.headers.host,
@@ -33,7 +33,7 @@ var proxyServer = httpProxy.createServer(function (req,res,proxy) {
   });
 });
 proxyServer.listen(8888);
-{% endhighlight %}
+```
 
 <h2>Adding support for HTTPS</h2>
 <p>The first thing we will need is a certificate that will be used by <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank">TLS</a> implementation for encryption. A server has access to certificate private and public key thus it is
@@ -41,7 +41,7 @@ proxyServer.listen(8888);
   is only used during initial handshake to exchange a session key in a secure manner between client and server. This session key is then used by both client and server for traffic encryption using symmetric algorithm.</p>
 <p>Naturally to get or rather to buy a proper certificate one would have to be verified by a valid certification authority. Fortunately for the sake of a demo we can generate a self signed certificate. That’s really easy, a nice description is available
   on <a href="https://devcenter.heroku.com/articles/ssl-certificate-self" target="_blank">heroku help pages</a>:</p>
-{% highlight bash %}
+```
 openssl genrsa -des3 -passout pass:x -out proxy-mirror.pass.key 2048
 echo "Generated proxy-mirror.pass.key"
 
@@ -55,13 +55,13 @@ echo "Generated proxy-mirror.csr"
 openssl x509 -req -days 365 -in proxy-mirror.csr -signkey proxy-mirror.key -out proxy-mirror.crt
 echo "Generated proxy-mirror.crt"
 
-{% endhighlight %}
+```
 
 <h3>http-proxy support for https</h3>
 <p>http-proxy module supports various https configuration for example passing traffic from https to http and vice versa. Unfortunately I couldn’t find a way to get it working without preconfiguring target host and port – which was a problem while I was implementing
   <a
   href="https://github.com/miensol/proxy-mirror" target="_blank">proxy-mirror</a>. Here is what <em>curl</em>will print out when trying to use such proxy:</p>
-{% highlight bash %}
+```
 curl -vk --proxy https://localhost:8888/ https://pl-pl.facebook.com/
 * timeout on name lookup is not supported
 * About to connect() to proxy localhost port 8888 (#0)
@@ -74,12 +74,12 @@ curl -vk --proxy https://localhost:8888/ https://pl-pl.facebook.com/
 &gt; User-Agent: curl/7.26.0
 &gt; Proxy-Connection: Keep-Alive
 &gt;
-{% endhighlight %}
+```
 
 <p>I suspect the problem is inherently related to the way http-proxy uses nodejs core http(s) modules – I might be wrong here though. The workaround I’ve used in <a href="https://github.com/miensol/proxy-mirror" target="_blank">proxy-mirror</a> was to listen
   to <em><a href="http://nodejs.org/api/http.html#http_event_connect" target="_blank">CONNECT</a>    </em>event on http server, establish socket connection to a fake https server listening on different port. When the https connection is established the
   fake https server handler proxies requests further. The advantage of this approach is that we can use the same proxy address for both http and https. Here is the code:</p>
-{% highlight javascript linenos %}
+```
 var httpProxy = require('http-proxy'),
   fs = require('fs'),
   https = require('https'),
@@ -128,7 +128,7 @@ var fakeHttps = https.createServer(httpsOptions, function (req, res) {
 
 proxyServer.listen(8888);
 fakeHttps.listen(8889);
-{% endhighlight %}
+```
 
 <h2>HTML5 WebSocket support</h2>
 <p>The above code has still problems handling <a href="http://en.wikipedia.org/wiki/WebSocket" target="_blank">WebSockets</a>. This is because browsers, according to the spec, change the way they establish initial connection when they detect that they are

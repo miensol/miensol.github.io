@@ -22,9 +22,9 @@ author:
   following command:
 
 
-{% highlight bash %}
+```
 curl http://wp.pl --proxy http://localhost:8888/
-{% endhighlight %}
+```
 will result in following output when the proxy is Fiddler:
 
 <pre style="font-size: 12px">[Fiddler] Response Header parsing failed.
@@ -46,9 +46,9 @@ while
   a simple implementation relaying on node.js core http module and http-proxy module outputs this:
 
 
-{% highlight bash %}
+```
 An error has occurred: {"bytesParsed":0,"code":"HPE_INVALID_CONSTANT"}
-{% endhighlight %}
+```
 Meanwhile without the proxy parameter the actual response is:
 
 

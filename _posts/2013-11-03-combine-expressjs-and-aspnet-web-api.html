@@ -34,11 +34,11 @@ author:
     I was when the only thing I needed to do was to call equivalent of:
 
 
-{% highlight javascript %}
+```
 connect.use(angularApp);
 connect.use(knockoutApp);
 connect.use(backboneApp);
-{% endhighlight %}
+```
 
   </p>
   <h2>OWIN opens a new world for .NET web stacks</h2>This all may sound blurry for a .NET newbie or maybe even to experienced developer so I’ll give some examples of what is or will be possible to do in a near future.
@@ -64,10 +64,10 @@ connect.use(backboneApp);
   a bleeding edge. The <a href="https://github.com/miensol/connect-webapi-samples" target="_blank">connect-webapi-samples</a> repo contains a sample of single web app where some requests are served by express.js while others using ASP.NET Web Api. You can
   start the server with:
 
-{% highlight bash %}
+```
 msbuild ./Connect.WebApi.sln
 node ./index.js
-{% endhighlight %}
+```
 Navigating to <a href="http://localhost:3000/hello">http://localhost:3000/hello</a> will give you response from Express:
 
 
