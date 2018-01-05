@@ -57,7 +57,7 @@ The first step is to return `Mono<T>` which is simply done with [`Mono.create`](
 
 The `_workInProgressWasDecremented` is used to guard and decrement the `currentWorkInProgressCounter` in a thread safe fashion. We first check whether we have immediately exceeded the maximum number of queued jobs. If the threshold is reached, we notify the observer about the error with [`outsideSink.error`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/MonoSink.html#error-java.lang.Throwable-). 
 
-If we have enough capacity to a perform `job`, we convert it to a reactive world with [`Mono.fromCallable`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#fromCallable-java.util.concurrent.Callable-) and attach a [`doAfterTerminate`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#doAfterTerminate-java.lang.Runnable-) callback that decrements work in progress counter. The `Task` class links `singleJob` and `outsideSink` so that they are both accessible while processing. Finally, we schedule the `task` through `taskSink.next(delayedTask)`.
+If we have enough capacity to a perform `job`, we convert it to a reactive world with [`Mono.fromCallable`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#fromCallable-java.util.concurrent.Callable-) and attach a [`doAfterTerminate`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#doAfterTerminate-java.lang.Runnable-) callback that decrements the work in progress counter. The `Task` class links `singleJob` and `outsideSink` so that they are both accessible while processing. Finally, we schedule the `task` through `taskSink.next(delayedTask)`.
 
 ## Task coordinator state
 
