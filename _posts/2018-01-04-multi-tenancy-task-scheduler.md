@@ -11,9 +11,9 @@ image: /images/multi-tenancy-task-scheduler/sorting.jpg
 
 [Last time I showed]({% post_url 2017-12-12-spring-mvc-multi-tenacy %}) how to extend Spring default request handler adapter so that we are able to schedule or reject incoming requests. The goal of the `TenantTaskCoordinator` is to:
 - queue requests for processing 
-- limit maximum number of concurrently processed requests
-- reject requests after maximum queue size is reached
-- interrupt processing of a request upon upstream subscription disposal
+- limit the maximum number of concurrently processed requests
+- reject requests after the maximum queue size is reached
+- interrupt processing of a request upon an upstream subscription disposal
 
 ![Assigning resources](/images/multi-tenancy-task-scheduler/sorting.jpg)
 
@@ -53,11 +53,11 @@ Our entry point into `TenantTaskCoordinator` is a single method `fun <T : Any> e
     }
 ```
 
-The first step is to return `Mono<T>` which is simply done with [`Mono.create`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#create-java.util.function.Consumer-). The `sink` we get passed is used to control the outcome observed from outside. It also allows for registering an [`onCancel`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/MonoSink.html#onCancel-reactor.core.Disposable-) callback invoked when upstream cancels its subscription. 
+The first step is to return `Mono<T>` which is simply done with [`Mono.create`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#create-java.util.function.Consumer-). The `sink` we get passed is used to control the outcome observed from outside. It also allows for registering an [`onCancel`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/MonoSink.html#onCancel-reactor.core.Disposable-) callback invoked when the upstream cancels its subscription. 
 
-The `_workInProgressWasDecremented` is used to guard and decrement the `currentWorkInProgressCounter` in a thread safe fashion. We first check whether we have immediately exceeded maximum number of queued jobs. If the threshold is reached, we notify the observer about the error with [`outsideSink.error`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/MonoSink.html#error-java.lang.Throwable-). 
+The `_workInProgressWasDecremented` is used to guard and decrement the `currentWorkInProgressCounter` in a thread safe fashion. We first check whether we have immediately exceeded the maximum number of queued jobs. If the threshold is reached, we notify the observer about the error with [`outsideSink.error`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/MonoSink.html#error-java.lang.Throwable-). 
 
-If we have enough capacity to perform `job`, we convert it to reactive world with [`Mono.fromCallable`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#fromCallable-java.util.concurrent.Callable-) and attach a [`doAfterTerminate`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#doAfterTerminate-java.lang.Runnable-) callback that decrements work in progress counter. The `Task` class links `singleJob` and `outsideSink` so that they are both accessible when processing. Finally, we schedule the `task` through `taskSink.next(delayedTask)`.
+If we have enough capacity to a perform `job`, we convert it to a reactive world with [`Mono.fromCallable`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#fromCallable-java.util.concurrent.Callable-) and attach a [`doAfterTerminate`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html#doAfterTerminate-java.lang.Runnable-) callback that decrements work in progress counter. The `Task` class links `singleJob` and `outsideSink` so that they are both accessible while processing. Finally, we schedule the `task` through `taskSink.next(delayedTask)`.
 
 ## Task coordinator state
 
@@ -86,7 +86,7 @@ class TenantTaskCoordinator(private val scheduler: Scheduler,
         }
 ```
 
-The first interesting part is how we setup `taskSink` by using [`Flux.create`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#create-java.util.function.Consumer-reactor.core.publisher.FluxSink.OverflowStrategy-). For clarity, we explicitly pass `FluxSink.OverflowStrategy.BUFFER` so that tasks are buffered in case they outpace processor. The `name` is used to get better log messages. Finally, we call `processSinkWithLimitedConcurrency` to start task processing using the given `scheduler`. Interestingly the `onErrorResume` restarts the processing in case we have a bug.
+The first interesting part is how we setup `taskSink` by using [`Flux.create`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#create-java.util.function.Consumer-reactor.core.publisher.FluxSink.OverflowStrategy-). For clarity, we explicitly pass `FluxSink.OverflowStrategy.BUFFER` so that tasks are buffered in case they outpace the processor. The `name` is used to get better log messages. Finally, we call `processSinkWithLimitedConcurrency` to start task processing using the given `scheduler`. Interestingly the `onErrorResume` restarts the processing in case we have a bug.
 
 ## Task coordinator concurrent processing
 
