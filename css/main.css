@@ -185,6 +185,11 @@ code {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.me .fa-stack-overflow {
+  color: rgb(244, 128, 36);
+}
+
 .me a i {
   -webkit-transition: all .4s linear;
   transition: all .4s linear;
