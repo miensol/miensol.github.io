@@ -87,7 +87,7 @@ Expected: <150>
      but: was <160>
 ```
 
-[ShouldKO](https://github.com/miensol/shouldko) incorporates a source code line with the assertion into the assertion message itself. This comes really handy when we have multiple lines with assertions that form a one logical condition. This is a small thing, but can greatly improve debugging test issues especially when all we have is a log file produced by a test run.
+[ShouldKO](https://github.com/miensol/shouldko) incorporates a source code line with the assertion into the assertion message itself. This comes really handy when we have multiple lines with assertions that form one logical condition. This is a small thing, but can greatly improve debugging test issues especially when all we have is a log file produced by a test run.
 
 ## Installation of ShouldKO
 
