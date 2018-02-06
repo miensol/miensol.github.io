@@ -64,7 +64,7 @@ publishing {
 }
 ```
 
-The above Maven Publications include sources artifact. However, one needs to define it first as it is not included by default when applying `java` or `kotlin` plugins to a Gradle project. This is easily done as follows:
+The above Maven Publications include sources artifact. Publishing additional classifiers for artifacts is important since [it allows for IDE to show a documentation popup or debug through the library source code](https://stackoverflow.com/a/20909695/155213).  However, one needs to define it first as it is not included by default when applying `java` or `kotlin` plugins to a Gradle project. This is easily done as follows:
 
 ```groovy
 allprojects {
