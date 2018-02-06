@@ -9,7 +9,7 @@ crosspost: true
 image: /images/publish-library/announce.jpg
 ---
 
-A seasoned developer now and then creates a piece of code that he or she would like to _re use_ in a different project. When such time comes it is useful to know how to publish a library so that it can easily be incorporated into a different project. In this post I will describe how to publish a Kotlin library to [JCenter](https://bintray.com/bintray/jcenter) with `maven-publish` and `com.jfrog.bintray` Gradle plugins.
+A seasoned developer now and then creates a piece of code that he or she would like to _reuse_ in a different project. When such time comes it is useful to know how to publish a library so that it can easily be incorporated into a different project. In this post I will describe how to publish a Kotlin library to [JCenter](https://bintray.com/bintray/jcenter) with `maven-publish` and `com.jfrog.bintray` Gradle plugins.
 
 ![publish](/images/publish-library/announce.jpg)
 
