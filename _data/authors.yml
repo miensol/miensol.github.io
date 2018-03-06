@@ -1,0 +1,16 @@
+piotr:
+  name: Piotr Mionskowski
+  web: https://miensol.pl
+  email: piotr.mionskowski@gmail.pl
+  bio: "TDD fan eager to learn new things"
+  avatar: https://miensol.pl/images/me.jpg
+  twitter: miensol
+  github: miensol
+  stackoverflow: 155213/miensol
+  crosspost: https://miensol.pl/:categories/:year/:month/:day/:title.html
+  social:
+    name: Piotr Mionskowski
+    links:
+      - https://twitter.com/miensol
+      - https://github.com/miensol
+      - https://stackoverflow.com/users/155213/miensol
