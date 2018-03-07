@@ -1,7 +1,7 @@
 <h1 class="title"><a href="{{ page.url }}">{{ page.title }}</a>
 <p class="small">
   <span><i class="fa fa-calendar"></i> {{ page.date | date_to_long_string }}</span>
-  <span class="tags"><i class="fa fa-tags"></i> {{ page.categories | array_to_sentence_string }}</span>
+  <span class="tags"><i class="fa fa-tags"></i> {{ page.categories | concat: page.tags | array_to_sentence_string }}</span>
 
 </p>
 </h1>
