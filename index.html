@@ -7,7 +7,18 @@ title: Coder thoughts
     {% assign content=post.content %}
     {% assign page=post %}
     <li class="post">
-      {% include post.html %}
+      <h2><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+        <p class="small">
+          <span><i class="icon-calendar"></i> {{ page.date | date_to_long_string }}</span>
+          <span class="tags"><i class="icon-tags"></i> {{ page.categories | concat: page.tags | array_to_sentence_string }}</span>
+        </p>
+        {% if page.image %}
+          <img class="post-image" alt="{{ page.title }}" src="{{ post.image | absolute_url }}">
+        {% endif %}
+        <p class="post-content">{{ post.excerpt | strip_html | truncate: 1000 }}</p>
+        <div class="read-more">
+            <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">Read more</a>
+        </div>
     </li>
   {% endfor %}
 </ul>

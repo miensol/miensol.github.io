@@ -14,7 +14,7 @@ social:
 locale: en_US
 url: https://miensol.pl
 logo: /image/me.jpg
-paginate: 5
+paginate: 15
 encoding: utf-8
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
