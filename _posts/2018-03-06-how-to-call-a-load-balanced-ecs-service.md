@@ -13,7 +13,7 @@ A service running [ECS](https://aws.amazon.com/ecs/) can call plethora of AWS AP
 
 ![containers](/images/ecs-service/containers.jpeg)
 
-# Deploy an ECS service to multiple hosts
+## Deploy an ECS service to multiple hosts
 
 Whenever we care about availability of a service running inside AWS, we need to have it running in at least 2 availability zones. For that reason when defining the ECS Cluster Auto Scaling Group we need to specify at least 2 VPC Subnets running in different availability zones.
 
@@ -56,7 +56,7 @@ Notice how we are using 2 private subnets as `VPCZoneIdentifier`. The `MinSize` 
 
 The `ServiceA` deployed in `ECSMainCluster` is also specifying that at it has [`DesiredCount`](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html) of 2 which instructs ECS to have at least 2 instances of the service running. The [`LoadBalancers`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-loadbalancers) and [`Role`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-role) attributes are required for the load balanced setup. The `ECSServiceRole` must allow the ECS agent to make calls to the load balancer API. The `LoadBalancers` reference [an ALB target group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) to which the running ECS task should be added.
 
-# A private load balancer
+## A private load balancer
 
 In order for us to be able to call an API exposed by ECS service running on multiple instances we will use [an internal Application Load Balancer](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html). By internal, I mean that the load balancer will not be accessible outside of the VPC.
 
@@ -127,7 +127,7 @@ For the load balancer to perform some actions we need to configure listeners tha
 
 The `PrivateApiLoadBalancerHttpListener` specifies that the HTTP request to `PrivateApiLoadBalancer` on port 80 should be routed to `PrivateApiLoadBalancerInvalidHostGroup`. The `AWS::ElasticLoadBalancingV2::Listener` requires us to set the `DefaultActions`. The above setup allows us to fail in a consistent manner. Unless there are `AWS::ElasticLoadBalancingV2::ListenerRule` which match an incoming the HTTP request it will be routed to an empty `AWS::ElasticLoadBalancingV2::TargetGroup` which in turn will result in 502 Bad Gateway. This allows us to effectively decouple the `DefaultActions` of the load balancer listener from a specific ECS service instance.
 
-# Attach ECS service to an Application Load Balancer
+## Attach ECS service to an Application Load Balancer
 
 It is time to route a request from the Application Load Balancer to the ECS service instances. The [`AWS::ElasticLoadBalancingV2::ListenerRule`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html) allows us to configure such behavior:
 
@@ -167,7 +167,7 @@ It is time to route a request from the Application Load Balancer to the ECS serv
 
 The `ServiceAAlbHttpListenerRule` states that any request with a `Host` equal to `service-a.in.example.com` should be routed to an instance from the `ServiceAAlbTargetGroup`. The `ServiceAAlbTargetGroup` group is referenced from the `ServiceA` definition and contains all running and healthy instances of our task. This means that in order to call the HTTP API exposed by `ServiceA` we will simply use the `service-a.in.example.com` domain name.
 
-# A private DNS record
+## A private DNS record
 
 The last part is to define a [Private Hosted Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zone-private-creating.html) and [a DNS Record Set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset.html) so that a DNS look up, happening inside the VPC, for `service-a.in.example.com` results in an IP address of the `PrivateApiLoadBalancer`.
 

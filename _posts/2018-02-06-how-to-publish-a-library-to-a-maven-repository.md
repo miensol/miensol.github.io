@@ -13,7 +13,7 @@ A seasoned developer now and then creates a piece of code that he or she would l
 
 ![publish](/images/publish-library/announce.jpg)
 
-# Gradle Maven plugins
+## Gradle Maven plugins
 
 The first step is to apply [Maven plugin](https://docs.gradle.org/current/userguide/maven_plugin.html). The plugin adds support for deploying artifacts to Maven repositories. Note that in case of multi-project build e.g. [ShouldKO](https://github.com/bright/shouldko) the Maven plugin should be applied to every project that defines some artifact to be published. You can use `allprojects` to get rid of duplication e.g.:
 
@@ -32,7 +32,7 @@ allprojects {
 
 For the [`com.jfrog.bintray`](https://github.com/bintray/gradle-bintray-plugin) plugin, used later on, to work nicely with Maven artifacts we need to apply additional Gradle plugin. This additional piece is the [`maven-publish`](https://docs.gradle.org/current/userguide/publishing_maven.html) plugin which provides ability to publish artifacts in Maven format. All we need to do is to `apply plugin: 'maven-publish'` in the main project.
 
-# Define Maven publishing
+## Define Maven publishing
 
 The [`com.jfrog.bintray`](https://github.com/bintray/gradle-bintray-plugin#step-7-define-artifacts-to-be-uploaded-to-bintray) plugin relies on properly defined [Maven Publications](https://docs.gradle.org/current/userguide/publishing_maven.html). The Gradle DSL allows us to define them easily basing on project properties e.g.
 
@@ -74,7 +74,7 @@ allprojects {
 }
 ```
 
-# Project versioning
+## Project versioning
 
 As you saw above, we have used `project.version` to indicate a version to `MavenPublication`. There are multiple strategies to version software but the [Semantic Versioning](https://semver.org/) scheme is widely accepted as a standard when it comes to libraries. If you wish to use it then there are plugins available for Gradle to simplify the mundane tasks of maintaining pre-release and patch versions. I like the set of plugin from [`ajoberstar`](https://github.com/ajoberstar/gradle-git/wiki) that provide an opinionated way to version your project based on git tags. Applying them is easy:
 
@@ -93,7 +93,7 @@ Now when you issue e.g. `gradle build` the plugin will [infer a next version bas
 Inferred project: shouldko, version: 0.1.5-dev.0.uncommitted+4f71d34
 ```
 
-# Bintray upload
+## Bintray upload
 
 Finally, when we are ready to upload our library and make it available for everyone we need to set up a [Bintray account](https://bintray.com/signup/oss). Once we have it, on the [profile](https://bintray.com/profile/edit) page we can access API key required to configure [the Bintray](https://github.com/bintray/gradle-bintray-plugin) Gradle plugin.
 
@@ -133,7 +133,7 @@ afterEvaluate {
 }
 ```
 
-# Travis build
+## Travis build
 
 Every project should have at least some form of [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration). For open source software there are at least couple of free build servers available. [Travis](https://travis-ci.org) is probably the most popular one. For gradle project Travis will by default call `build`. If you would like to upload the build artifacts to Bintray whenever successful build completes you need to add a line to `script` section of the `.travis.yml` like so:
 
@@ -149,7 +149,7 @@ Obviously the Bintray credentials need to be configured as well which can be don
 
 Now, the Gradle git plugin will create a development version and publish it to Bintray on every Travis build.
 
-# Tag to release
+## Tag to release
 
 Whenever you want to release a new version of the library you now can simply tag a particular version e.g.
 
@@ -160,7 +160,7 @@ git push origin 0.1.4
 
 After a local or continuos integration build completes you should see a new version in the Bintray web application. From there you need [to publish the version](https://bintray.com/docs/usermanual/starting/starting_tutorial2uploading.html).
 
-# Use the new library
+## Use the new library
 
 Once a version is published, you can consume it from a maven or gradle project easily. Until you [link your package to JCenter](https://bintray.com/bintray/jcenter), you need to inform your build system about a new maven repository location e.g.:
 

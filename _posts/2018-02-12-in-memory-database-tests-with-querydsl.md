@@ -13,7 +13,7 @@ Writing tests is an important skill of a software engineer. I used to write lots
 
 ![test](/images/querydsl-tests/test.jpg)
 
-# Querydsl is awesome
+## Querydsl is awesome
 
 [Querydsl](http://www.querydsl.com/) is a set of libraries that, as the name implies, provides strongly typed Domain Specific Language to execute queries. [Querydsl](http://www.querydsl.com/) supports many data access technologies e.g. JDBC, Hibernate, JDO. 
 The following example in Kotlin illustrates how a DSL generated based on entity class can be used to find some entities through JPA interface:
@@ -39,7 +39,7 @@ val user = CollQuery<Nothing>()
     .fetchOne()
 ```
 
-# Abstract the complex away
+## Abstract the complex away
 
 The above examples look similar thanks to common interface provided by Querydsl. However, while the default DSL is very capable I found it a bit verbose in the most common cases. For that matter let us define a bit simpler interface that will allow for finding entities given some criteria
 
@@ -59,7 +59,7 @@ val latestUser = queries.findFirst(QUser.user, orderBy = { it.created.desc() })
 
 The above interface allows us to express commonly used queries in a more succinct fashion.
 
-# Define production implementation
+## Define production implementation
 
 With Querydsl it is easy enough to implement the `EntityQueries` interface. First the production implementation delegating to JPA for actual data access technology:
 
@@ -102,7 +102,7 @@ Such interface would be _magically_ implemented by Spring runtime and put in the
 
 The `EntityQueries` invocation to find users by email is almost as readable as `findByEmail` but does not suffer from any of downsides listed above. Encapsulating more complex filtering logic can be done with a simple extension method or a more elaborate [Specification pattern](https://en.wikipedia.org/wiki/Specification_pattern). 
 
-# Using in-memory database in tests
+## Using in-memory database in tests
 
 We can use Spring test helpers to ease writing tests involving an application context that lets us inject e.g. `UsersController` instance to invoke its methods. However, such tests are, comparatively, very slow to run and thus cause the feedback loop to be much slower. Fortunately the `EntityQueries` abstraction is very easy to implement using POJO in-memory collections.
 
@@ -141,7 +141,7 @@ class UsersControllerTests {
 }
 ```
 
-# Notes on in-memory implementation
+## Notes on in-memory implementation
 
 The `EntityQueries` interface above is obviously a simplified version. The most important missing piece is the ability to save entities. However, this is not a hard thing to implement given the in-memory implementation. We can, for instance, make use of the fact that all of our entities are marked JPA Persistence annotations to find a field marked with `@Id`, generate the id and assign it based on the contents of the `entities` variable. Another approach is to mark all entities with a dedicated interface e.g.
 

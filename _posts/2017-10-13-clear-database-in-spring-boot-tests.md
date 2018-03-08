@@ -12,7 +12,7 @@ Nowadays using a production like database in _unit_<sup>[1](#sup-1)</sup> tests 
 
 ![Database](/images/clear-database-in-spring-boot-tests/disk.jpg){: .center-image}
 
-# Problems with Spring Boot Transactional tests
+## Problems with Spring Boot Transactional tests
 
 Spring Boot offers many helpers to make testing application easier. Among many you can use a [`@DataJpaTest`](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html#boot-features-testing-spring-boot-applications-testing-autoconfigured-jpa-test) which by default will configure an in-memory embedded database. You can use a production type database in tests by adding `@AutoConfigureTestDatabase(replace=Replace.NONE)` like so:
 
@@ -60,7 +60,7 @@ Using `@Transactional` annotation on tests is certainly easy but **I still don't
 - The test code needs to be more tightly coupled to production code and [we all know that it hinders refactoring](http://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html).
 
 
-# Cleaning database with SQL
+## Cleaning database with SQL
 
 In tests involving a database I reset its state **before each** test using plain old SQL. This makes the test code less dependent on how a transaction is scoped inside production code. Furthermore, one can easily review the values saved **after a test failure**. It turns out it is easy to write a JUnit `@Rule` or [`BeforeEachCallback`](http://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/extension/BeforeEachCallback.html) that will remove all rows from all tables. Moreover, we can do so without hard coding table names which would increase maintenance cost.
 

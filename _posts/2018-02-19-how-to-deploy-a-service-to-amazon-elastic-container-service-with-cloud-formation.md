@@ -13,7 +13,7 @@ Containers are becoming the standard way of deploying software. Every cloud vend
 
 ![containers](/images/ecs-service/containers.jpeg)
 
-# ECS Cluster definition
+## ECS Cluster definition
 
 At [Bright Inventions](https://brightinventions.pl/) we often use CloudFormation for infrastructure configuration since it allows us to version and track changes easily. The first piece of infrastructure we need is an [ECS cluster](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_clusters.html). A cluster is a logical group of tasks/containers running inside ECS. In particular, since we will be using [EC2 Launch Type](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html), a cluster can also be though of as a group of EC2 instances with an ECS Agent installed.
 
@@ -119,7 +119,7 @@ Inside `UserData` we define a shell script that informs ECS Agent about the clus
 
 With the above we are now ready to deploy an ECS Cluster through CloudFormation template. However, a cluster without containers is pretty meaningless.
 
-# ECS Service and Task definition
+## ECS Service and Task definition
 
 In AWS lingo [an ECS Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html) describes a minimal configuration required to deploy and run a Task Definition. A [Task Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) in turn describes how to configure and run a set of containers that form a single logical component.
 

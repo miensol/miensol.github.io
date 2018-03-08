@@ -14,7 +14,7 @@ Most of us write tests these days. Whether they are unit, integration, end-to-en
 
 ![search](/images/shouldko-1/search.jpg)
 
-# Hamcrest 
+## Hamcrest 
 
 I think [Hamcrest](http://hamcrest.org/) is the most popular assertion library available in Java and Kotlin ecosystem. Let us look at an oversimplified example of [`Money`](https://martinfowler.com/bliki/ValueObject.html) class:
 
@@ -61,7 +61,7 @@ Expected: <150>
 
 Let's see how we can improve on that.
 
-# ShouldKO: better assertion messages for Kotlin
+## ShouldKO: better assertion messages for Kotlin
 
 [ShouldKO](https://github.com/miensol/shouldko) is a simple library I've come up with that improves the assertion messages. Its idea is based on assertion libraries available in .NET e.g. [Shouldly](https://github.com/shouldly/shouldly). Let us see how the tests looks like using [ShouldKO](https://github.com/miensol/shouldko):
 
