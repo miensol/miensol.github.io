@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to deploy lambda function with cloudformation?
+title: How to deploy Lambda function with CloudFormation?
 author: piotr
 hidden: false
 tags: aws cloudformation lambda cloudform
@@ -9,7 +9,7 @@ crosspost: false
 image: /images/lambda/lambda.png
 ---
 
-Serverless deployments are popular these days. With minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless oferring from the biggest cloud providers. For a long time I thought about them only in the context of ad-hoc setups not suitable for long term development. This was until I found out that you can, with little effort, version and deploy the serverless API just as traditional backends. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool [Adam](https://adambar.pl/) created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
+Serverless deployments are popular these days. With minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless offering from the biggest cloud providers. For a long time I thought about them only in the context of ad-hoc setups not suitable for long term development. This was until I found out that you can, with little effort, version and deploy the serverless API just as traditional back-end. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool [Adam](https://adambar.pl/) created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
 
 ![Lambda function](/images/lambda/lambda.png)
 
@@ -47,7 +47,7 @@ cloudform({
 });
 ```
 
-There are only 2 resources defined in the template.  `HelloWorld` is the AWS Lambda function definition. We have set the `Runtime` property to use `nodejs6.10` hence the `Code.ZipFile` contains a JavaScript code. Obviously the [`ZipFile`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html) may only be used for the most simple functions. The `S3Buket` and `S3Key` properties can be used to deploy a more involved function implementation. The `Handler` defines which function from `Code` the Lambda runtime should invoke. In case of `ZipFile` the first part is always `index`. 
+There are only 2 resources defined in the template.  `HelloWorld` is the AWS Lambda function definition. We have set the `Runtime` property to use `nodejs6.10` hence the `Code.ZipFile` contains a JavaScript code. Obviously the [`ZipFile`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html) may only be used for the most simple functions. The `S3Bucket` and `S3Key` properties can be used to deploy a more involved function implementation. The `Handler` defines which function from `Code` the Lambda runtime should invoke. In case of `ZipFile` the first part is always `index`. 
 
 The `Role` is a required setting for every AWS Lambda function. It defines what entitlements the code invoked by the Lambda runtime has. In the above template we define a policy which can be assumed by `lambda.amazonaws.com` and references a pre-defined AWS managed policy [`AWSLambdaBasicExecutionRole`](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html). The `AWSLambdaBasicExecutionRole` makes it possible for the Lambda function logs to be pushed to Cloud Watch.
 
@@ -179,7 +179,7 @@ Since we now use TypeScript for `Alice` and `Bob` source we need to install the 
 }
 ```
 
-we can use the following commands to compile and deploy  Lambda functions:
+we can use the following commands to compile and deploy Lambda functions:
 
 ```bash 
 ./node_modules/.bin/tsc
