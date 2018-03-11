@@ -109,7 +109,7 @@ export default cloudform({
 })
 ```
 
-As you can see above, we've extracted a function `lambdaFunction` to simplify Lambda function declaration. Both `Alice` and `Bob` function's bodies are defined in separate files. Interestingly  `Alice` function, during invocation, will have acecss to `BobFunction` environment variable pointing to `Bob` function [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+As you can see above, we've extracted a function `lambdaFunction` to simplify Lambda function declaration. Both `Alice` and `Bob` function's bodies are defined in separate files. Interestingly  `Alice` function, during invocation, will have access to `BobFunction` environment variable pointing to `Bob` function [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 Our `LambdaExecutionRole` lacks permission to invoke another Lambda function. Let's fix that:
 
@@ -163,7 +163,7 @@ export function main(event: any, context: any, callback: any) {
 }
 ```
 
-Since we now use TypeScript for `Alice` and `Bob` source we need to install the compiler `npm i --save-dev typescript @types/node aws-sdk`. Unfortunately currently in [cloudform](https://github.com/bright/cloudform) it is not possible to use custom `tsconfig.json` for the compilation. Fortunately we can invoke the compiler manually and use its outputs as any other Node.js source ode. With a `tsconfig.json`:
+Since we now use TypeScript for `Alice` and `Bob` source we need to install the compiler `npm i --save-dev typescript @types/node aws-sdk`. Unfortunately currently in [cloudform](https://github.com/bright/cloudform) it is not possible to use custom `tsconfig.json` for the compilation. Fortunately we can invoke the compiler manually and use its outputs as any other Node.js source code. With a `tsconfig.json`:
 
 ```json
 {
