@@ -11,7 +11,7 @@ image: /images/lambda/lambda.png
 
 Serverless deployments popular these days. With minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless oferring from the biggest cloud providers. For a long time I thought about them only in the context of ad-hoc setups not suitable for long term development. This was until I found out that you can, with little effort, version and deploy the serverless API just as the traditional backends. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool we've created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
 
-![Lambda function](/images/lambda/labmda.png)
+![Lambda function](/images/lambda/lambda.png)
 
 ## Step 1: Define a template
 
