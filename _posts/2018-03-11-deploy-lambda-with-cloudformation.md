@@ -9,7 +9,7 @@ crosspost: true
 image: /images/lambda/lambda.png
 ---
 
-Serverless deployments popular these days. With minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless oferring from the biggest cloud providers. For a long time I thought about them only in the context of ad-hoc setups not suitable for long term development. This was until I found out that you can, with little effort, version and deploy the serverless API just as the traditional backends. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool we've created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
+Serverless deployments are popular these days. With minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless oferring from the biggest cloud providers. For a long time I thought about them only in the context of ad-hoc setups not suitable for long term development. This was until I found out that you can, with little effort, version and deploy the serverless API just as traditional backends. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool [Adam](https://adambar.pl/) created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
 
 ![Lambda function](/images/lambda/lambda.png)
 
@@ -49,11 +49,11 @@ cloudform({
 
 There are only 2 resources defined in the template.  `HelloWorld` is the AWS Lambda function definition. We have set the `Runtime` property to use `nodejs6.10` hence the `Code.ZipFile` contains a JavaScript code. Obviously the [`ZipFile`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-function-code.html) may only be used for the most simple functions. The `S3Buket` and `S3Key` properties can be used to deploy a more involved function implementation. The `Handler` defines which function from `Code` the Lambda runtime should invoke. In case of `ZipFile` the first part is always `index`. 
 
-The `Role` is a required setting for every AWS Lambda function. It defines what entitlements the code invoked by the Lambda runtime has. In the above template we define a policy which can be assumed by `lambda.amazonaws.com` and referencs a pre-defined AWS managed policy [`AWSLambdaBasicExecutionRole`](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html). The `AWSLambdaBasicExecutionRole` makes it possible for the Lambda function logs to be pushed to Cloud Watch.
+The `Role` is a required setting for every AWS Lambda function. It defines what entitlements the code invoked by the Lambda runtime has. In the above template we define a policy which can be assumed by `lambda.amazonaws.com` and references a pre-defined AWS managed policy [`AWSLambdaBasicExecutionRole`](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html). The `AWSLambdaBasicExecutionRole` makes it possible for the Lambda function logs to be pushed to Cloud Watch.
 
 ## Step 2: Create the AWS Lambda function
 
-Deploying our Lambda function using CloudFormation is easy. All we need is a single command:
+Deploying our Lambda function using CloudFormation requires a single command:
 
 ```bash
 aws cloudformation create-stack \
@@ -62,15 +62,15 @@ aws cloudformation create-stack \
     --template-body file://<(node_modules/.bin/cloudform aws-template.ts)
 ```
 
-The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` intructs CloudFormation to use a template defined in file. The `<(...)` is [bash and zsh way to pass the output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
+The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` intructs CloudFormation to use a template defined in file. The `<(...)` is [bash and zsh way to pass an output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as if the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
 
 ![AWS Lambda Screen](/images/lambda/aws-console.png)
 
-It is possible to use the AWS Console provided editor to test and change the function. However, if we are to treat the serverless approach seriously we should not forget about standard practices like versioning of our source code.
+It is possible to use the AWS Console editor to test and change the function. However, if we are to treat the serverless approach seriously we should not forget about standard practices like versioning of our source code.
 
 ## Step 3: Update and version AWS Labmda function
 
-Since we have defined the AWS Lambda function using a cloudform template we can version it as any other code. The whole serverless infrastructure we use and configure is treated as source code allowing for easy replication of deployment environments, audit trail and change management. Let's see how we can use cloudform to add another function that will be called by first one.
+Since we have defined the AWS Lambda function using a cloudform template we can version it as any other code. The whole serverless infrastructure we use and configure is treated as source code allowing for easy replication of deployment environments, audit trail and change management. Let's see how we can use cloudform to add another function that will be called by the first one.
 
 ```typescript
 import cloudform, { Lambda, IAM, Fn } from 'cloudform';
@@ -104,12 +104,12 @@ export default cloudform({
             }
         }),
         [Bob]: lambdaFunction(readFileSync('Bob.js', 'utf-8')),
-        ...
+        ... // LambdaExecutionRole see below
     }
 })
 ```
 
-As you can see above, we've extracted a function `lambdaFunction` to simplify Lambda function declaration. Both `Alice` and `Bob` function's bodies are defined in separate files. Interestingly  `Alice` function, during invocation, will have acecss to `BobFunction` environment pointing to `Bob` function [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+As you can see above, we've extracted a function `lambdaFunction` to simplify Lambda function declaration. Both `Alice` and `Bob` function's bodies are defined in separate files. Interestingly  `Alice` function, during invocation, will have acecss to `BobFunction` environment variable pointing to `Bob` function [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
 Our `LambdaExecutionRole` lacks permission to invoke another Lambda function. Let's fix that:
 
@@ -139,7 +139,7 @@ Our `LambdaExecutionRole` lacks permission to invoke another Lambda function. Le
     })
 ```
 
-The `Alice` and `Bob` source exports `main` functions invoked by AWS Lambda runtime:
+The `Alice` and `Bob` sources export `main` functions invoked by AWS Lambda runtime:
 
 ```typescript
 // Alice.ts
@@ -163,7 +163,7 @@ export function main(event: any, context: any, callback: any) {
 }
 ```
 
-Since we now use TypeScript for `Alice` and `Bob` source we need to install the compiler `npm i --save-dev typescript @types/node aws-sdk`. Unfortunately currently in [cloudform](https://github.com/bright/cloudform) it is not possible to our custom `tsconfig.json` for the compilation. Fortunately we can invoke the compiler manually and use its outputs as any other source ode. With following `tsconfig.json`:
+Since we now use TypeScript for `Alice` and `Bob` source we need to install the compiler `npm i --save-dev typescript @types/node aws-sdk`. Unfortunately currently in [cloudform](https://github.com/bright/cloudform) it is not possible to use custom `tsconfig.json` for the compilation. Fortunately we can invoke the compiler manually and use its outputs as any other Node.js source ode. With a `tsconfig.json`:
 
 ```json
 {
@@ -179,7 +179,7 @@ Since we now use TypeScript for `Alice` and `Bob` source we need to install the 
 }
 ```
 
-We can now use the following commands to deploy our Lambda function:
+we can use the following commands to compile and deploy  Lambda functions:
 
 ```bash 
 ./node_modules/.bin/tsc
