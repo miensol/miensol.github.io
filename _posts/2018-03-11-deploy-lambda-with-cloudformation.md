@@ -62,13 +62,13 @@ aws cloudformation create-stack \
     --template-body file://<(node_modules/.bin/cloudform aws-template.ts)
 ```
 
-The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` intructs CloudFormation to use a template defined in file. The `<(...)` is [bash and zsh way to pass an output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as if the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
+The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` instructs CloudFormation to use a template defined in file. The `<(...)` is [bash and zsh way to pass an output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as if the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
 
 ![AWS Lambda Screen](/images/lambda/aws-console.png)
 
 It is possible to use the AWS Console editor to test and change the function. However, if we are to treat the serverless approach seriously we should not forget about standard practices like versioning of our source code.
 
-## Step 3: Update and version AWS Labmda function
+## Step 3: Update and version AWS Lambda function
 
 Since we have defined the AWS Lambda function using a cloudform template we can version it as any other code. The whole serverless infrastructure we use and configure is treated as source code allowing for easy replication of deployment environments, audit trail and change management. Let's see how we can use cloudform to add another function that will be called by the first one.
 
