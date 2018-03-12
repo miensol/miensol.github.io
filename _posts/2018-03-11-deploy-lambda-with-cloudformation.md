@@ -9,7 +9,7 @@ crosspost: false
 image: /images/lambda/lambda.png
 ---
 
-Serverless deployments are popular these days. With minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless offering from the biggest cloud providers. For a long time I thought about them only in the context of ad-hoc setups not suitable for long term development. This was until I found out that you can, with little effort, version and deploy the serverless API just as traditional back-end. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool [Adam](https://adambar.pl/) created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
+Serverless deployments are popular these days. With a minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless offering from the biggest cloud providers. For a long time I had thought about them only in the context of ad-hoc setups not suitable for a long term development. This was until I found out that you can, with a little effort, version and deploy the serverless API just as a traditional back-end. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool [Adam](https://adambar.pl/) created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
 
 ![Lambda function](/images/lambda/lambda.png)
 
@@ -62,15 +62,15 @@ aws cloudformation create-stack \
     --template-body file://<(node_modules/.bin/cloudform aws-template.ts)
 ```
 
-The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` instructs CloudFormation to use a template defined in file. The `<(...)` is [bash and zsh way to pass an output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as if the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
+The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` instructs CloudFormation to use a template defined in a file. The `<(...)` is [bash and zsh way to pass an output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as if the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
 
 ![AWS Lambda Screen](/images/lambda/aws-console.png)
 
-It is possible to use the AWS Console editor to test and change the function. However, if we are to treat the serverless approach seriously we should not forget about standard practices like versioning of our source code.
+It is possible to use the AWS Console editor to test and change the function. However, if we are to treat the serverless approach seriously we should not forget about the standard practices like versioning of our source code.
 
 ## Step 3: Update and version AWS Lambda function
 
-Since we have defined the AWS Lambda function using a cloudform template we can version it as any other code. The whole serverless infrastructure we use and configure is treated as source code allowing for easy replication of deployment environments, audit trail and change management. Let's see how we can use cloudform to add another function that will be called by the first one.
+Since we have defined the AWS Lambda function using a cloudform template we can version it as any other code. The whole serverless infrastructure we use and configure is treated as a source code allowing for an easy replication of deployment environments, audit trail and change management. Let's see how we can use cloudform to add another function that will be called by the first one.
 
 ```typescript
 import cloudform, { Lambda, IAM, Fn } from 'cloudform';
@@ -109,9 +109,9 @@ export default cloudform({
 })
 ```
 
-As you can see above, we've extracted a function `lambdaFunction` to simplify Lambda function declaration. Both `Alice` and `Bob` function's bodies are defined in separate files. Interestingly  `Alice` function, during invocation, will have access to `BobFunction` environment variable pointing to `Bob` function [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
+As you can see above, we've extracted a function `lambdaFunction` to simplify Lambda function declaration. Both `Alice` and `Bob` function's bodies are defined in separate files. Interestingly  `Alice` function, during the invocation, will have access to `BobFunction` environment variable pointing to `Bob` function [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html).
 
-Our `LambdaExecutionRole` lacks permission to invoke another Lambda function. Let's fix that:
+Our `LambdaExecutionRole` lacks a permission to invoke another Lambda function. Let's fix that:
 
 ```typescript
     [LambdaExecutionRole]: new IAM.Role({
@@ -200,4 +200,4 @@ END RequestId: 6a87c764-251e-11e8-b921-f9ca7649c7d7
 REPORT RequestId: 6a87c764-251e-11e8-b921-f9ca7649c7d7	Duration: 1110.68 ms	Billed Duration: 1200 ms 	Memory Size: 128 MB	Max Memory Used: 34 MB	
 ```
 
-Serverless infrastructure offers endless possibilities. With [cloudform](https://github.com/bright/cloudform) we can take AWS Labmda development, change management, deployment to the next level.
+Serverless infrastructure offers endless possibilities. With [cloudform](https://github.com/bright/cloudform) we can take AWS Lambda development, change management and deployment to the next level.
