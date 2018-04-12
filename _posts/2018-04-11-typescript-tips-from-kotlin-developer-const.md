@@ -9,11 +9,11 @@ crosspost: true
 image: /images/kotlin/kotlin-logo.png
 ---
 
-Nowadays I mostly code in [Kotlin programming language](https://kotlinlang.org/). I got interested in it when I started working on a Java 7 codebase and quickly got fed up with the language. At [Bright Inventions](https://brightinventions.pl) we often use TypeScript for both back-end, front-end and mobile development so I though I would share some thoughts and tips for TypeScript learned when using Kotlin. In particular this post is about constant variables.
+Nowadays I mostly code in [Kotlin programming language](https://kotlinlang.org/). I got interested in it when I started working on a Java 7 codebase and quickly got fed up with the language. At [Bright Inventions](https://brightinventions.pl) we often use TypeScript for both back-end, front-end and mobile development so I thought I would share some thoughts and tips for TypeScript learned while using Kotlin. In particular this post is about constant variables.
 
 ## Use `const` whenever possible
 
-[Using immutable variables](https://hackernoon.com/5-benefits-of-immutable-objects-worth-considering-for-your-next-project-f98e7e85b6ac) aids reasoning about flow and state of a program. It helps compiler to provide more intelligent hints especially when dealing with nullable types.
+[Using immutable variables](https://hackernoon.com/5-benefits-of-immutable-objects-worth-considering-for-your-next-project-f98e7e85b6ac) aids reasoning about the flow and state of a program. It helps compiler to provide more intelligent hints especially while dealing with nullable types.
 
 In Kotlin a `val` keyword denotes a variable which value does not change after initialization e.g.:
 
@@ -25,7 +25,7 @@ x = 20 // Error: Val cannot be reassigned
 y = 30 // Error: Val cannot be reassigned
 ```
 
-In [TypeScript](https://www.typescriptlang.org/) such situation is handled with `const`:
+In [TypeScript](https://www.typescriptlang.org/) such a situation is handled with `const`:
 
 ```typescript
 const x: number // Error: 'const' declarations must be initialized
@@ -36,7 +36,7 @@ y = 30 // Error: Cannot assign to 'y' because it is constant or read-only proper
 
 ## Compilers love `const`
 
-The first way in which compiler gets smarter when we use `const` is null checks. When you enable [`strictNullChecks`](https://www.typescriptlang.org/docs/handbook/compiler-options.html), which you should, both Kotlin and TypeScript compiler understand if something can or cannot be null.
+The first way in which the compiler gets smarter when we use `const` are null checks. When you enable [`strictNullChecks`](https://www.typescriptlang.org/docs/handbook/compiler-options.html), which you should, both Kotlin and TypeScript compiler understand if something can or cannot be null.
 
 ```typescript
 const firstName: string | null = getFirstName()
@@ -50,7 +50,7 @@ if (firstName !== null && lastName !== null) {
 }
 ```
 
-In first 2 lines we declare `firstName` and `lastName` as holding `string` or `null`. The variables are initialized with helper functions `getFirstName` and `getLastName`. After we check that `firstName` and `lastName` are **definitely not null** we fire some async function. We can safely use `firstName.length`. However, when we use `lastName.length` the compiler complains with `Object is possibly 'null'` error. This is because it is possible that in between the null check and the `console.log` statement _something_ could change the `lastName` value. We might know that this is not true just by looking at the code. The compiler however, cannot be 100% sure in all cases. Thankfully we have `const` and we can share our knowledge with the compiler.
+In the first 2 lines we declare `firstName` and `lastName` as holding `string` or `null`. The variables are initialized with the helper functions `getFirstName` and `getLastName`. After we check that `firstName` and `lastName` are **definitely not null** we fire some async function. We can safely use `firstName.length`. However, when we use `lastName.length` the compiler complains with `Object is possibly 'null'` error. This is because it is possible that in between the null check and the `console.log` statement _something_ could change the `lastName` value. We might know that this is not true just by looking at the code. The compiler however, cannot be 100% sure in all cases. Thankfully we have `const` and we can share our knowledge with the compiler.
 
 ## Compilers catch bugs with `const`
 
