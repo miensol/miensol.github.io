@@ -2,10 +2,10 @@
 layout: post
 title: How to convert an express app to AWS Lambda?
 author: piotr
-hidden: true
+hidden: false
 tags: aws cloudformation lambda cloudform
 comments: true
-crosspost: true
+crosspost: false
 image: /images/express-js.webp
 ---
 
@@ -206,7 +206,7 @@ x-powered-by: Express
 }
 ```
 
-And a post to the echo endpoint:
+And a `POST` to the echo endpoint:
 
 ```bash
 http https://${API_URL}/v1/echo message="Hello 👋 My name is Piotr"
@@ -234,3 +234,7 @@ x-powered-by: Express
 
 ```
 
+
+## Reduced infrastructure cost
+
+With the above setup we no longer have to pay for an always running EC2 instance. Our monthly bill depends on the number of requests that are executed against the exposed API. More than that, we get much better scalability characteristics, especially when we have nonlinear request rates. 
