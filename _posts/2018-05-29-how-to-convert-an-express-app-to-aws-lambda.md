@@ -78,7 +78,8 @@ const
     RestApi = 'RestApi',
     RestApiMainResource = 'RestApiMainResource',
     PackageKey = 'PackageKey',
-    RestApiDeployment = 'RestApiDeployment';
+    RestApiDeployment = 'RestApiDeployment',
+    RestApiMethod = 'RestApiMethod';
 
 export default cloudform({
     Parameters: {
@@ -130,7 +131,7 @@ To be able to invoke the AWS Lambda function using HTTP protocol we will use [AP
     ParentId: Fn.GetAtt(RestApi, 'RootResourceId'),
     PathPart: "{proxy+}",
 }),
-RestApiMethod: new ApiGateway.Method({
+[RestApiMethod]: new ApiGateway.Method({
     HttpMethod: 'ANY',
     ResourceId: Fn.Ref(RestApiMainResource),
     RestApiId: Fn.Ref(RestApi),
