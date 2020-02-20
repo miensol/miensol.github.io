@@ -6,11 +6,12 @@ author: piotr
 comments: true
 hidden: false
 crosspost: true
+date: 2017-10-13 22:14:00
 ---
 
 Nowadays using a production like database in _unit_<sup>[1](#sup-1)</sup> tests is a common practice. Calling a real database can increase our confidence that a tested code actually works. Having said that a database, by its very nature, brings external state into a test that will affect its behavior, hence we need to pay special attention to prepare the test execution. There are couple of ways to handle the database state in tests and I'm going to describe an approach I like most.
 
-![Database](/images/clear-database-in-spring-boot-tests/disk.jpg){: .center-image}
+![Database](../images/clear-database-in-spring-boot-tests/disk.jpg){: .center-image}
 
 ## Problems with Spring Boot Transactional tests
 

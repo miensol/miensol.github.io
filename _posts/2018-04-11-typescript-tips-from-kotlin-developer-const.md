@@ -7,6 +7,7 @@ tags: TypeScript Kotlin const immutability
 comments: true
 crosspost: true
 image: /images/kotlin/kotlin-logo.png
+date: 2018-04-11
 ---
 
 Nowadays I mostly code in [Kotlin programming language](https://kotlinlang.org/). I got interested in it when I started working on a Java 7 codebase and quickly got fed up with the language. At [Bright Inventions](https://brightinventions.pl) we often use TypeScript for both back-end, front-end and mobile development so I thought I would share some thoughts and tips for TypeScript learned while using Kotlin. In particular this post is about constant variables.

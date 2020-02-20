@@ -7,12 +7,13 @@ tags: junit hamcreset kotlin assertion tests
 comments: true
 crosspost: true
 image: /images/shouldko-1/search.jpg
+date: 2018-01-17
 ---
 
 
 Most of us write tests these days. Whether they are unit, integration, end-to-end or performance tests once written we often do not go back to them until they fail. It is thus vital to have a clear assertion message when a test fails.
 
-![search](/images/shouldko-1/search.jpg)
+![search](../images/shouldko-1/search.jpg)
 
 ## Hamcrest 
 

@@ -7,11 +7,12 @@ tags: database timeout jdbc query transaction
 comments: true
 crosspost: true
 image: /images/database-timeouts/database-files.jpg
+date: 2017-10-31 22:14:00
 ---
 
 Last time I have outlined [the importance of timeouts]({% post_url 2017-10-23-the-importance-of-timeouts %}). Without a carefully considered timeouts our application can become unresponsive easily. In this post I will focus on configuring various timeouts related to interaction with database. I am going to focus specifically on relational databases. The principles and practices however can be applied equally well to other types of databases.
 
-![Database](/images/database-timeouts/database-files.jpg)
+![Database](../images/database-timeouts/database-files.jpg)
 
 ## Different kinds of timeouts
 

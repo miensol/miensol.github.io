@@ -7,6 +7,7 @@ tags: spring mvc spring-boot multi-tenant reactive reactor
 comments: true
 crosspost: true
 image: /images/multi-tenancy-task-scheduler/sorting.jpg
+date: 2018-01-04 22:14:00
 ---
 
 [Last time I showed]({% post_url 2017-12-12-spring-mvc-multi-tenacy %}) how to extend Spring default request handler adapter so that we are able to schedule or reject incoming requests. The goal of the `TenantTaskCoordinator` is to:
@@ -15,7 +16,7 @@ image: /images/multi-tenancy-task-scheduler/sorting.jpg
 - reject requests after the maximum queue size is reached
 - interrupt processing of a request upon an upstream subscription disposal
 
-![Assigning resources](/images/multi-tenancy-task-scheduler/sorting.jpg)
+![Assigning resources](../images/multi-tenancy-task-scheduler/sorting.jpg)
 
 ## Tenant task coordinator execute method
 

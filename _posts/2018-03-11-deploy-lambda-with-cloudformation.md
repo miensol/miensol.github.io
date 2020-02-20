@@ -7,11 +7,12 @@ tags: aws cloudformation lambda cloudform
 comments: true
 crosspost: false
 image: /images/lambda/lambda.png
+date: 2018-03-11
 ---
 
 Serverless deployments are popular these days. With a minimal cost you can have your own code wait and respond to various events. AWS Lambda, Azure Functions are just 2 examples of serverless offering from the biggest cloud providers. For a long time I had thought about them only in the context of ad-hoc setups not suitable for a long term development. This was until I found out that you can, with a little effort, version and deploy the serverless API just as a traditional back-end. In this post I am going to show how to deploy AWS Lambda functions with the help of the tool [Adam](https://adambar.pl/) created at [Bright Inventions](https://brightinventions.pl/) called [cloudform](https://github.com/bright/cloudform).
 
-![Lambda function](/images/lambda/lambda.png)
+![Lambda function](..//images/lambda/lambda.png)
 
 ## Step 1: Define a template
 
@@ -64,7 +65,7 @@ aws cloudformation create-stack \
 
 The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` instructs CloudFormation to use a template defined in a file. The `<(...)` is [bash and zsh way to pass an output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as if the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
 
-![AWS Lambda Screen](/images/lambda/aws-console.png)
+![AWS Lambda Screen](../images/lambda/aws-console.png)
 
 It is possible to use the AWS Console editor to test and change the function. However, if we are to treat the serverless approach seriously we should not forget about the standard practices like versioning of our source code.
 
