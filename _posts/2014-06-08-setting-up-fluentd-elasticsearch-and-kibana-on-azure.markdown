@@ -1,8 +1,8 @@
 ---
-layout: post
+template: post
 title: "Setting up fluentd elasticsearch and Kibana on azure"
 date: 2014-06-08
-categories: [fluentd, kibana, elasticsearch]
+tags: [fluentd, kibana, elasticsearch]
 ---
 
 A decent way too go through log files can come handy in various ways. From debugging bugs, investigating problems on production environment to figuring out where performance bottle necks are.

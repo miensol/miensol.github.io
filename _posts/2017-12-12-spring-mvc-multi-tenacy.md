@@ -1,12 +1,12 @@
 ---
-layout: post
+template: post
 title: Multi tenancy in Spring MVC 
 author: piotr
 hidden: false
-tags: spring mvc spring-boot multi-tenant reactive reactor
+tags: [spring, mvc, spring boot, multi-tenant, reactive, reactor]
 comments: true
 crosspost: true
-image: /images/spring-mvc-multi-tenancy/feeding-animals.jpg
+socialImage: ../images/spring-mvc-multi-tenancy/feeding-animals.jpg
 date: 2017-12-12 22:14:00
 ---
 

@@ -1,9 +1,8 @@
 ---
-layout: post
+template: post
 title: 'Android Data Binding Part 1: Why it is important'
 date: '2015-07-20 08:36'
-categories:
-  - android
+category: android
 tags:
   - android
 author: piotr

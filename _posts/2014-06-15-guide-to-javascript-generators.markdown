@@ -1,8 +1,8 @@
 ---
-layout: post
+template: post
 title: "Guide to javascript generators"
 date: 2014-06-15
-categories: ['javascript', 'nodejs', 'ES6', 'generators']
+tags: ['javascript', 'nodejs', 'ES6', 'generators']
 permalink: "/2014/06/15/guide-to-javascript-generators.html"
 ---
 ![Yield sign](../images/yield-sign.jpg)

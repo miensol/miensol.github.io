@@ -1,8 +1,8 @@
 ---
-layout: post
+template: post
 title: "ng-click and double post"
 date: 2014-05-21
-categories: ["angularjs"]
+tags: ["angularjs"]
 ---
 
 Recently I was fixing a bug in an application written in angularjs which turned out to be pretty interesting for me. At first I couldn't reproduce the error and just when I got frustrated it happened exactly as stated in the issue tracker. As it turned out the problem was caused by fast clicking on the same button.

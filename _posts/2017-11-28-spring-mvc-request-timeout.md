@@ -1,12 +1,12 @@
 ---
-layout: post
+template: post
 title: Request timeouts in Spring MVC
 author: piotr
 hidden: false
-tags: spring mvc spring-boot request timeout
+tags: [spring, mvc, spring boot, request, timeout]
 comments: true
 crosspost: true
-image: /images/spring-mvc-request-timeout/late.jpg
+socialImage: ../images/spring-mvc-request-timeout/late.jpg
 date: 2017-11-28 22:14:00
 ---
 

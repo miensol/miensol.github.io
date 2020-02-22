@@ -1,9 +1,8 @@
 ---
-layout: post
+template: post
 title: 'Android Data Binding Part 2: Observer pattern to the bone'
 date: '2015-07-27 08:45'
-categories:
-  - android
+category: android
 tags:
   - android
 author: piotr

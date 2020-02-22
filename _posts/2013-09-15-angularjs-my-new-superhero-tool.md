@@ -1,6 +1,6 @@
 ---
 title: "AngularJs – my new superhero tool."
-layout: "post"
+template: "post"
 permalink: "/2013/09/angularjs-my-new-superhero-tool.html"
 uuid: "7985976294168401382"
 guid: "tag:blogger.com,1999:blog-8010146885187116176.post-7985976294168401382"
@@ -11,7 +11,7 @@ blogger:
     siteid: "8010146885187116176"
     postid: "7985976294168401382"
     comments: "0"
-categories: [javascript, mvvm, angularjs, mvc]
+tags: [javascript, mvvm, angularjs, mvc]
 author:
     name: "Piotr Mionskowski"
     url: "https://plus.google.com/117451536189361867209?rel=author"

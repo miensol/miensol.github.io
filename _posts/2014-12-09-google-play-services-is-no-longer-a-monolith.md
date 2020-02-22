@@ -1,8 +1,8 @@
 ---
-layout: post
+template: post
 title: "Google Play Services is no longer a giant monolith"
 date: 2014-12-09 10:00:00
-categories: ["android"]
+tags: ["android"]
 ---
 
 Nowadays it's getting harder and harder to build a meaningful app and not rely on [Google Play Services](https://developer.android.com/google/play-services/index.html) to aid us in some commonly required features such as [maps](http://developer.android.com/google/play-services/maps.html), better [location provider](https://developer.android.com/google/play-services/location.html), [geo fencing](http://developer.android.com/training/location/geofencing.html) and so much more. Unfortunately up until now the library shipped as a giant monolith ripping us from [one third of dex method limit](http://jakewharton.com/play-services-is-a-monolith/). For curious reader here's are method counts in couple of versions:

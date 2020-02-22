@@ -1,9 +1,9 @@
 ---
-layout: post
+template: post
 title: The importance of timeouts
 author: piotr
 hidden: false
-tags: server request timeout query resiliency spring boot
+tags: [server, request, timeout, query, resiliency, spring boot]
 comments: true
 crosspost: true
 date: 2017-10-23 22:14:00

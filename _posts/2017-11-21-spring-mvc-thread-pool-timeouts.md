@@ -1,12 +1,12 @@
 ---
-layout: post
+template: post
 title: Request timeouts in Spring MVC
 author: piotr
 hidden: false
-tags: spring mvc spring-boot thread-pool timeout
+tags: [spring, mvc, spring boot, thread-pool, timeout]
 comments: true
 crosspost: true
-image: /images/thread-pool-timeouts/thread-pool.jpg
+socialImage: ../images/thread-pool-timeouts/thread-pool.jpg
 date: 2017-11-21 22:14:00
 ---
 

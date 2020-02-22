@@ -1,12 +1,12 @@
 ---
-layout: post
+template: post
 title: TypeScript tips from Kotlin developer - const
 author: piotr
 hidden: false
-tags: TypeScript Kotlin const immutability
+tags: [TypeScript, Kotlin, const, immutability]
 comments: true
 crosspost: true
-image: /images/kotlin/kotlin-logo.png
+socialImage: ../images/kotlin/kotlin-logo.png
 date: 2018-04-11
 ---
 

@@ -1,9 +1,8 @@
 ---
-layout: post
+template: post
 title: "Simple Config Sections 1.2 released"
 date: "2015-12-25 10:21"
-categories:
-  - .net
+category: .net
 tags:
   - .net
 author: piotr
