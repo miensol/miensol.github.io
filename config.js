@@ -25,7 +25,7 @@ module.exports = {
     ],
     author: {
         name: 'Piotr Mionskowski',
-        photo: '/piotr-bright.png',
+        photo: '/piotr-bright.jpg',
         bio: 'TDD fan eager to learn new things. Always focused, always eager to ask why?',
         contacts: {
             email: 'piotr.mionskowski@gmail.com',
