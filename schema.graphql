@@ -476,6 +476,7 @@ type MarkdownRemarkEdge {
 
 type MarkdownRemarkFields {
     categorySlug: String
+    redirectFrom: [String]
     slug: String
     tagSlugs: [String]
 }
@@ -498,11 +499,8 @@ type MarkdownRemarkFrontmatter {
     description: String
     draft: Boolean
     guid: String
-    hidden: Boolean
     permalink: String
-    slug: String
     socialImage: File
-    socialImage2: File
     tags: [String]
     template: String
     title: String
@@ -794,6 +792,7 @@ type SiteSiteMetadata {
     copyright: String
     disqusShortname: String
     menu: [SiteSiteMetadataMenu]
+    siteUrl: String
     subtitle: String
     title: String
     url: String
@@ -817,6 +816,7 @@ type SiteSiteMetadataAuthorContacts {
     linkedin: String
     rss: String
     soundcloud: String
+    stackoverflow: String
     telegram: String
     twitter: String
     vkontakte: String
@@ -1072,6 +1072,7 @@ enum FileFieldsEnum {
     childMarkdownRemark___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___excerptAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___fields___categorySlug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    childMarkdownRemark___fields___redirectFrom @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___fields___tagSlugs @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     childMarkdownRemark___fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1085,45 +1086,7 @@ enum FileFieldsEnum {
     childMarkdownRemark___frontmatter___description
     childMarkdownRemark___frontmatter___draft
     childMarkdownRemark___frontmatter___guid
-    childMarkdownRemark___frontmatter___hidden
     childMarkdownRemark___frontmatter___permalink
-    childMarkdownRemark___frontmatter___slug
-    childMarkdownRemark___frontmatter___socialImage2___absolutePath
-    childMarkdownRemark___frontmatter___socialImage2___accessTime
-    childMarkdownRemark___frontmatter___socialImage2___atime
-    childMarkdownRemark___frontmatter___socialImage2___atimeMs
-    childMarkdownRemark___frontmatter___socialImage2___base
-    childMarkdownRemark___frontmatter___socialImage2___birthTime
-    childMarkdownRemark___frontmatter___socialImage2___birthtime
-    childMarkdownRemark___frontmatter___socialImage2___birthtimeMs
-    childMarkdownRemark___frontmatter___socialImage2___blksize
-    childMarkdownRemark___frontmatter___socialImage2___blocks
-    childMarkdownRemark___frontmatter___socialImage2___changeTime
-    childMarkdownRemark___frontmatter___socialImage2___children
-    childMarkdownRemark___frontmatter___socialImage2___ctime
-    childMarkdownRemark___frontmatter___socialImage2___ctimeMs
-    childMarkdownRemark___frontmatter___socialImage2___dev
-    childMarkdownRemark___frontmatter___socialImage2___dir
-    childMarkdownRemark___frontmatter___socialImage2___ext
-    childMarkdownRemark___frontmatter___socialImage2___extension
-    childMarkdownRemark___frontmatter___socialImage2___gid
-    childMarkdownRemark___frontmatter___socialImage2___id
-    childMarkdownRemark___frontmatter___socialImage2___ino
-    childMarkdownRemark___frontmatter___socialImage2___mode
-    childMarkdownRemark___frontmatter___socialImage2___modifiedTime
-    childMarkdownRemark___frontmatter___socialImage2___mtime
-    childMarkdownRemark___frontmatter___socialImage2___mtimeMs
-    childMarkdownRemark___frontmatter___socialImage2___name
-    childMarkdownRemark___frontmatter___socialImage2___nlink
-    childMarkdownRemark___frontmatter___socialImage2___prettySize
-    childMarkdownRemark___frontmatter___socialImage2___publicURL
-    childMarkdownRemark___frontmatter___socialImage2___rdev
-    childMarkdownRemark___frontmatter___socialImage2___relativeDirectory
-    childMarkdownRemark___frontmatter___socialImage2___relativePath
-    childMarkdownRemark___frontmatter___socialImage2___root
-    childMarkdownRemark___frontmatter___socialImage2___size
-    childMarkdownRemark___frontmatter___socialImage2___sourceInstanceName
-    childMarkdownRemark___frontmatter___socialImage2___uid
     childMarkdownRemark___frontmatter___socialImage___absolutePath
     childMarkdownRemark___frontmatter___socialImage___accessTime
     childMarkdownRemark___frontmatter___socialImage___atime
@@ -1537,6 +1500,7 @@ enum MarkdownRemarkFieldsEnum {
     excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     excerptAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     fields___categorySlug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
+    fields___redirectFrom @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     fields___slug @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     fields___tagSlugs @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
     fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1550,70 +1514,7 @@ enum MarkdownRemarkFieldsEnum {
     frontmatter___description
     frontmatter___draft
     frontmatter___guid
-    frontmatter___hidden
     frontmatter___permalink
-    frontmatter___slug
-    frontmatter___socialImage2___absolutePath
-    frontmatter___socialImage2___accessTime
-    frontmatter___socialImage2___atime
-    frontmatter___socialImage2___atimeMs
-    frontmatter___socialImage2___base
-    frontmatter___socialImage2___birthTime
-    frontmatter___socialImage2___birthtime
-    frontmatter___socialImage2___birthtimeMs
-    frontmatter___socialImage2___blksize
-    frontmatter___socialImage2___blocks
-    frontmatter___socialImage2___changeTime
-    frontmatter___socialImage2___childImageSharp___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childImageSharp___id @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___children @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___excerpt @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___excerptAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___fileAbsolutePath @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___headings @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___html @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___htmlAst @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___id
-    frontmatter___socialImage2___childMarkdownRemark___rawMarkdownBody @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___tableOfContents @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___childMarkdownRemark___timeToRead @deprecated(reason : "Sorting on fields that need arguments to resolve is deprecated.")
-    frontmatter___socialImage2___children
-    frontmatter___socialImage2___children___children
-    frontmatter___socialImage2___children___id
-    frontmatter___socialImage2___ctime
-    frontmatter___socialImage2___ctimeMs
-    frontmatter___socialImage2___dev
-    frontmatter___socialImage2___dir
-    frontmatter___socialImage2___ext
-    frontmatter___socialImage2___extension
-    frontmatter___socialImage2___gid
-    frontmatter___socialImage2___id
-    frontmatter___socialImage2___ino
-    frontmatter___socialImage2___internal___content
-    frontmatter___socialImage2___internal___contentDigest
-    frontmatter___socialImage2___internal___description
-    frontmatter___socialImage2___internal___fieldOwners
-    frontmatter___socialImage2___internal___ignoreType
-    frontmatter___socialImage2___internal___mediaType
-    frontmatter___socialImage2___internal___owner
-    frontmatter___socialImage2___internal___type
-    frontmatter___socialImage2___mode
-    frontmatter___socialImage2___modifiedTime
-    frontmatter___socialImage2___mtime
-    frontmatter___socialImage2___mtimeMs
-    frontmatter___socialImage2___name
-    frontmatter___socialImage2___nlink
-    frontmatter___socialImage2___parent___children
-    frontmatter___socialImage2___parent___id
-    frontmatter___socialImage2___prettySize
-    frontmatter___socialImage2___publicURL
-    frontmatter___socialImage2___rdev
-    frontmatter___socialImage2___relativeDirectory
-    frontmatter___socialImage2___relativePath
-    frontmatter___socialImage2___root
-    frontmatter___socialImage2___size
-    frontmatter___socialImage2___sourceInstanceName
-    frontmatter___socialImage2___uid
     frontmatter___socialImage___absolutePath
     frontmatter___socialImage___accessTime
     frontmatter___socialImage___atime
@@ -1852,6 +1753,7 @@ enum SiteFieldsEnum {
     siteMetadata___author___contacts___linkedin
     siteMetadata___author___contacts___rss
     siteMetadata___author___contacts___soundcloud
+    siteMetadata___author___contacts___stackoverflow
     siteMetadata___author___contacts___telegram
     siteMetadata___author___contacts___twitter
     siteMetadata___author___contacts___vkontakte
@@ -1864,6 +1766,7 @@ enum SiteFieldsEnum {
     siteMetadata___menu
     siteMetadata___menu___label
     siteMetadata___menu___path
+    siteMetadata___siteUrl
     siteMetadata___subtitle
     siteMetadata___title
     siteMetadata___url
@@ -2477,6 +2380,7 @@ input MarkdownHeadingFilterListInput {
 
 input MarkdownRemarkFieldsFilterInput {
     categorySlug: StringQueryOperatorInput
+    redirectFrom: StringQueryOperatorInput
     slug: StringQueryOperatorInput
     tagSlugs: StringQueryOperatorInput
 }
@@ -2515,11 +2419,8 @@ input MarkdownRemarkFrontmatterFilterInput {
     description: StringQueryOperatorInput
     draft: BooleanQueryOperatorInput
     guid: StringQueryOperatorInput
-    hidden: BooleanQueryOperatorInput
     permalink: StringQueryOperatorInput
-    slug: StringQueryOperatorInput
     socialImage: FileFilterInput
-    socialImage2: FileFilterInput
     tags: StringQueryOperatorInput
     template: StringQueryOperatorInput
     title: StringQueryOperatorInput
@@ -2744,6 +2645,7 @@ input SiteSiteMetadataAuthorContactsFilterInput {
     linkedin: StringQueryOperatorInput
     rss: StringQueryOperatorInput
     soundcloud: StringQueryOperatorInput
+    stackoverflow: StringQueryOperatorInput
     telegram: StringQueryOperatorInput
     twitter: StringQueryOperatorInput
     vkontakte: StringQueryOperatorInput
@@ -2763,6 +2665,7 @@ input SiteSiteMetadataFilterInput {
     copyright: StringQueryOperatorInput
     disqusShortname: StringQueryOperatorInput
     menu: SiteSiteMetadataMenuFilterListInput
+    siteUrl: StringQueryOperatorInput
     subtitle: StringQueryOperatorInput
     title: StringQueryOperatorInput
     url: StringQueryOperatorInput

@@ -2,7 +2,7 @@
 template: post
 title: Multi tenancy task scheduler
 author: piotr
-hidden: false
+draft: false
 tags: [spring, mvc, spring boot, multi-tenant, reactive, reactor]
 comments: true
 crosspost: true
@@ -10,7 +10,7 @@ socialImage: ../images/multi-tenancy-task-scheduler/sorting.jpg
 date: 2018-01-04 22:14:00
 ---
 
-[Last time I showed]({% post_url 2017-12-12-spring-mvc-multi-tenacy %}) how to extend Spring default request handler adapter so that we are able to schedule or reject incoming requests. The goal of the `TenantTaskCoordinator` is to:
+[Last time I showed](/spring-mvc-multi-tenacy ) how to extend Spring default request handler adapter so that we are able to schedule or reject incoming requests. The goal of the `TenantTaskCoordinator` is to:
 - queue requests for processing 
 - limit the maximum number of concurrently processed requests
 - reject requests after the maximum queue size is reached

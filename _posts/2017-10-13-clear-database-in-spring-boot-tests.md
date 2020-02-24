@@ -4,7 +4,7 @@ title: How to clear database in Spring Boot tests?
 tags: [tests, spring boot, database, kotlin]
 author: piotr
 comments: true
-hidden: false
+draft: false
 crosspost: true
 date: 2017-10-13 22:14:00
 ---

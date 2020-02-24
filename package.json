@@ -4,7 +4,8 @@
   "description": "Piotr Mionskowski",
   "main": "n/a",
   "scripts": {
-    "develop": "npm run clean && gatsby develop",
+    "develop": "gatsby develop",
+    "clean-develop": "npm run clean && gatsby develop",
     "build": "npm run clean && gatsby build",
     "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public",
     "clean": "rimraf .cache public",
@@ -68,6 +69,7 @@
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-remark": "^2.6.52",
     "gatsby-transformer-sharp": "^2.3.14",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "invariant": "^2.2.4",
     "katex": "^0.11.1",
     "lodash": "^4.17.15",

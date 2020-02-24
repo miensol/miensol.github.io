@@ -2,7 +2,7 @@
 template: post
 title: TypeScript tips from Kotlin developer - const
 author: piotr
-hidden: false
+draft: false
 tags: [TypeScript, Kotlin, const, immutability]
 comments: true
 crosspost: true

@@ -7,6 +7,7 @@ module.exports = {
   pathPrefix: siteConfig.pathPrefix,
   siteMetadata: {
     url: siteConfig.url,
+    siteUrl: siteConfig.url,
     title: siteConfig.title,
     subtitle: siteConfig.subtitle,
     copyright: siteConfig.copyright,
@@ -58,6 +59,9 @@ module.exports = {
       }
     },
     {
+      resolve: 'gatsby-plugin-react-svg'
+    },
+    {
       resolve: 'gatsby-plugin-feed',
       options: {
         query: `
@@ -73,14 +77,17 @@ module.exports = {
         `,
         feeds: [{
           serialize: ({ query: { site, allMarkdownRemark } }) => (
-            allMarkdownRemark.edges.map((edge) => ({
-              ...edge.node.frontmatter,
-              description: edge.node.frontmatter.description,
-              date: edge.node.frontmatter.date,
-              url: site.siteMetadata.site_url + edge.node.fields.slug,
-              guid: site.siteMetadata.site_url + edge.node.fields.slug,
-              custom_elements: [{ 'content:encoded': edge.node.html }]
-            }))
+            allMarkdownRemark.edges.map((edge) => {
+              const frontmatter = edge.node.frontmatter;
+              return ({
+                ...frontmatter,
+                description: frontmatter.description ? frontmatter.description : edge.node.excerpt,
+                date: frontmatter.date,
+                url: site.siteMetadata.site_url + edge.node.fields.slug,
+                guid: site.siteMetadata.site_url + edge.node.fields.slug,
+                custom_elements: [{ 'content:encoded': edge.node.html }]
+              });
+            })
           ),
           query: `
               {
@@ -95,6 +102,7 @@ module.exports = {
                       fields {
                         slug
                       }
+                      excerpt(pruneLength: 320)
                       frontmatter {
                         title
                         date
@@ -107,7 +115,7 @@ module.exports = {
                 }
               }
             `,
-          output: '/rss.xml',
+          output: '/feed.xml',
           title: siteConfig.title
         }]
       }

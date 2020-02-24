@@ -39,6 +39,6 @@ Last but not least a layout file:
 
 <script src="https://gist.github.com/miensol/44ac5af33a60ad60cab7.js?file=activity_register.xml"></script>
 
-The data binding library, while still in beta, provides a nice toolset to remove the boilerplate code and improve Android code (unit) testability by extracting the logic from activity (or fragment). When used properly it can also save you from leaking resources. In the [next post]({% post_url 2015/2015-07-27-android-data-binding-part-2-observer-pattern-to-the-bone %}) I'll explain in more detail how it happens.
+The data binding library, while still in beta, provides a nice toolset to remove the boilerplate code and improve Android code (unit) testability by extracting the logic from activity (or fragment). When used properly it can also save you from leaking resources. In the [next post](/android-data-binding-part-2-observer-pattern-to-the-bone) I'll explain in more detail how it happens.
 
 *This article is cross-posted with [my company blog](http://blog.brightinventions.pl)*

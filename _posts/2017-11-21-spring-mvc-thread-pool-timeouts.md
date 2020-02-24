@@ -2,7 +2,7 @@
 template: post
 title: Request timeouts in Spring MVC
 author: piotr
-hidden: false
+draft: false
 tags: [spring, mvc, spring boot, thread-pool, timeout]
 comments: true
 crosspost: true
@@ -10,7 +10,7 @@ socialImage: ../images/thread-pool-timeouts/thread-pool.jpg
 date: 2017-11-21 22:14:00
 ---
 
-Last time we reviewed [how to configure HTTP client timeouts]({% post_url 2017-11-05-http-client-timeouts %}). This time let us focus on the other side of the HTTP request i.e. server. There is pretty much always a thread pool involved when we write a Spring MVC application. The thread pool configuration will vary depending on particular servlet container (Tomcat, Undertow, Jetty) so we have to watch out for subtle differences. However, most if not all of them will use a thread pool with fixed maximum size. As we already know, a pool of resources might get exhausted. In particular, a thread pool is more likely to get exhausted if we do not control timeouts diligently.  
+Last time we reviewed [how to configure HTTP client timeouts](/http-client-timeouts ). This time let us focus on the other side of the HTTP request i.e. server. There is pretty much always a thread pool involved when we write a Spring MVC application. The thread pool configuration will vary depending on particular servlet container (Tomcat, Undertow, Jetty) so we have to watch out for subtle differences. However, most if not all of them will use a thread pool with fixed maximum size. As we already know, a pool of resources might get exhausted. In particular, a thread pool is more likely to get exhausted if we do not control timeouts diligently.  
 
 ## Threads involved in a Spring MVC request handling
 

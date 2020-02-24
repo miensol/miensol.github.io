@@ -2,7 +2,7 @@
 template: post
 title: Request timeouts in Spring MVC
 author: piotr
-hidden: false
+draft: false
 tags: [spring, mvc, spring boot, request, timeout]
 comments: true
 crosspost: true
@@ -10,7 +10,7 @@ socialImage: ../images/spring-mvc-request-timeout/late.jpg
 date: 2017-11-28 22:14:00
 ---
 
-[As we saw previously]({% post_url 2017-11-21-spring-mvc-thread-pool-timeouts %}), we only have limited options to configure maximum time a request processing can take in Spring MVC. In this post I will show how to enforce such timeout through a custom [Servlet Filter](https://docs.oracle.com/cd/B14099_19/web.1012/b14017/filters.htm).
+[As we saw previously](/spring-mvc-thread-pool-timeouts ), we only have limited options to configure maximum time a request processing can take in Spring MVC. In this post I will show how to enforce such timeout through a custom [Servlet Filter](https://docs.oracle.com/cd/B14099_19/web.1012/b14017/filters.htm).
 
 ![Late request](../images/spring-mvc-request-timeout/late.jpg)
 
@@ -121,5 +121,5 @@ As you can see in the exception message, we see that the `Thread.sleep` in the c
 
 ## A word of warning
 
-The above Servlet Filter will not work if we use [Async Servlet Filters](https://docs.oracle.com/javaee/7/tutorial/servlets012.htm). When using Async Servlet Filter there is typically **more than 1** thread that handles a request hence the above approach will not work. Having said that if you use Async Servlet Filter there already is a way to apply a timeout that [is defined by the API](https://docs.oracle.com/javaee/6/api/javax/servlet/AsyncContext.html#setTimeout(long)). Another important point is to check how the request processing thread pool handles interrupted threads. [As we have discussed earlier]({% post_url 2017-11-21-spring-mvc-thread-pool-timeouts %}), the concrete implementation of thread pool used to process request depends on servlet container and configured used in the application. We should make sure that the interrupted thread is eventually replaced with a new thread by the pool so that timeouts do not change the effective thread pool size.
+The above Servlet Filter will not work if we use [Async Servlet Filters](https://docs.oracle.com/javaee/7/tutorial/servlets012.htm). When using Async Servlet Filter there is typically **more than 1** thread that handles a request hence the above approach will not work. Having said that if you use Async Servlet Filter there already is a way to apply a timeout that [is defined by the API](https://docs.oracle.com/javaee/6/api/javax/servlet/AsyncContext.html#setTimeout(long)). Another important point is to check how the request processing thread pool handles interrupted threads. [As we have discussed earlier](/spring-mvc-thread-pool-timeouts ), the concrete implementation of thread pool used to process request depends on servlet container and configured used in the application. We should make sure that the interrupted thread is eventually replaced with a new thread by the pool so that timeouts do not change the effective thread pool size.
 

@@ -2,7 +2,7 @@
 template: post
 title: How to call a load balanced ECS service?
 author: piotr
-hidden: false
+draft: false
 tags: [aws, ecs, cloudformation, elb, cloudform]
 comments: true
 crosspost: true
@@ -53,7 +53,7 @@ Whenever we care about availability of a service running inside AWS, we need to 
 }
 ```
 
-Notice how we are using 2 private subnets as `VPCZoneIdentifier`. The `MinSize` is also set to 2 which will cause both availability zones to have at least 1 instance running. For brevity subnets and VPC definitions are not included. You can find more details about how to configure the EC2 instances inside ECS cluster [in my previous post]({% post_url 2018-02-19-how-to-deploy-a-service-to-amazon-elastic-container-service-with-cloud-formation %}).
+Notice how we are using 2 private subnets as `VPCZoneIdentifier`. The `MinSize` is also set to 2 which will cause both availability zones to have at least 1 instance running. For brevity subnets and VPC definitions are not included. You can find more details about how to configure the EC2 instances inside ECS cluster [in my previous post](/how-to-deploy-a-service-to-amazon-elastic-container-service-with-cloud-formation ).
 
 The `ServiceA` deployed in `ECSMainCluster` is also specifying that at it has [`DesiredCount`](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html) of 2 which instructs ECS to have at least 2 instances of the service running. The [`LoadBalancers`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-loadbalancers) and [`Role`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ecs-service.html#cfn-ecs-service-role) attributes are required for the load balanced setup. The `ECSServiceRole` must allow the ECS agent to make calls to the load balancer API. The `LoadBalancers` reference [an ALB target group](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html) to which the running ECS task should be added.
 

@@ -2,7 +2,7 @@
 template: post
 title: How to convert an express app to AWS Lambda?
 author: piotr
-hidden: false
+draft: false
 tags: [aws, cloudformation, lambda, cloudform]
 comments: true
 crosspost: false
@@ -66,7 +66,7 @@ The `main` function is called by the AWS Lambda Node.js runtime. Note that we've
 
 ## Deploy the express app to AWS Lambda
 
-I already showed [how we can deploy lambda with cloudform]({% post_url 2018-03-11-deploy-lambda-with-cloudformation %}). We will use the previous example as a base:
+I already showed [how we can deploy lambda with cloudform](/deploy-lambda-with-cloudformation ). We will use the previous example as a base:
 
 ```typescript
 import cloudform, { Lambda, IAM, Fn, ApiGateway, Refs,  } from 'cloudform';

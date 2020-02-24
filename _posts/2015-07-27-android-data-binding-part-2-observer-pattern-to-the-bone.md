@@ -8,7 +8,7 @@ tags:
 author: piotr
 ---
 
-In the [previous part]({% post_url 2015/2015-07-20-android-data-binding-part-1-why-it-is-important %}) I've described typical problems we have to face when developing applications on Android. I've also highlighted that some of them may be mitigated when [data binding API](https://developer.android.com/tools/data-binding/guide.html) is utilized properly. It's time to dive into more details of how this promising API works.
+In the [previous part](/android-data-binding-part-1-why-it-is-important) I've described typical problems we have to face when developing applications on Android. I've also highlighted that some of them may be mitigated when [data binding API](https://developer.android.com/tools/data-binding/guide.html) is utilized properly. It's time to dive into more details of how this promising API works.
 
 ## Observer Pattern
 At the root of many of solutions we find in today's APIs is a design pattern. In case of the discussed Android API it is [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern) applied to the bone. In fact this particular pattern is so common and powerful that some languages and runtimes (C# with .NET, Objective-C and Swift on iOS and Mac) provide neat support for it. You may wonder why it is important in the context of Android data binding? The answer is simple yet easy to ignore - memory management. The following diagram depicts dependencies of an observer pattern's elements in the context of Android data binding:
