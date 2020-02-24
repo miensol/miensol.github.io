@@ -5,7 +5,7 @@ module.exports = {
     title: 'Piotr Mionskowski',
     subtitle: 'Piotr Mionskowski\'s thoughts on software, technology, architecture, design patterns and programming in general.',
     copyright: '© All rights reserved.',
-    disqusShortname: '',
+    disqusShortname: 'miensol',
     postsPerPage: 6,
     googleAnalyticsId: 'UA-49294874-1',
     useKatex: false,
