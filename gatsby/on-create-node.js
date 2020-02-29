@@ -62,7 +62,7 @@ const onCreateNode = ({ node, actions, getNode }) => {
         }
 
         if (node.frontmatter.socialImage) {
-            if (!fs.existsSync(path.join(process.cwd(), '_posts', node.frontmatter.socialImage))
+            if (!fs.existsSync(path.join(process.cwd(), 'posts', node.frontmatter.socialImage))
                 && !fs.existsSync(path.join(process.cwd(), 'content/pages', node.frontmatter.socialImage))
                 && !fs.existsSync(path.join(process.cwd(), 'content/posts', node.frontmatter.socialImage))
             ) {

@@ -6,13 +6,13 @@ draft: false
 tags: [maven, jcenter, jvm, gradle, kotlin]
 comments: true
 crosspost: true
-socialImage: ../images/publish-library/announce.jpg
+socialImage: ../../images/publish-library/announce.jpg
 date: 2018-02-06 22:14:00
 ---
 
 A seasoned developer now and then creates a piece of code that he or she would like to _reuse_ in a different project. When such time comes it is useful to know how to publish a library so that it can easily be incorporated into a different project. In this post I will describe how to publish a Kotlin library to [JCenter](https://bintray.com/bintray/jcenter) with `maven-publish` and `com.jfrog.bintray` Gradle plugins.
 
-![publish](../images/publish-library/announce.jpg)
+![publish](../../../images/publish-library/announce.jpg)
 
 ## Gradle Maven plugins
 
@@ -146,7 +146,7 @@ script:
 
 Obviously the Bintray credentials need to be configured as well which can be done through a project configuration page:
 
-![TravisCI environment configuration](../images/publish-library/travis-configure.png)
+![TravisCI environment configuration](../../../images/publish-library/travis-configure.png)
 
 Now, the Gradle git plugin will create a development version and publish it to Bintray on every Travis build.
 

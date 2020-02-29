@@ -6,7 +6,7 @@ draft: false
 tags: [http, timeout, network, rest, api]
 comments: true
 crosspost: true
-socialImage: ../images/http-client-timeouts/waiting.jpg
+socialImage: ../../images/http-client-timeouts/waiting.jpg
 date: 2017-11-05 22:14:00
 ---
 

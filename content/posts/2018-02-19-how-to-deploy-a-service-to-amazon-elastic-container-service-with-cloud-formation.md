@@ -6,13 +6,13 @@ draft: false
 tags: [aws, ecs, cloudformation, zuul] 
 comments: true
 crosspost: true
-socialImage: ../images/ecs-service/containers.jpeg
+socialImage: ../../images/ecs-service/containers.jpeg
 date: 2018-02-19
 ---
 
 Containers are becoming the standard way of deploying software. Every cloud vendor now offers one or multiple ways to run containers on their platform. Most of our clients uses AWS to host their SaaS solution. As part of a new development for one of our clients we have decided to move away from [Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html) and embrace containers. Amazon [Elastic Container Service](https://aws.amazon.com/ecs/) is an orchestration service that supports Docker containers and is generally available for over a year. Given our small development team it seemed like the best choice since it takes away most of the cluster management headaches. In this post I will describe how we deploy a container to ECS using [CloudFormation](https://aws.amazon.com/cloudformation/).
 
-![containers](../images/ecs-service/containers.jpeg)
+![containers](../../../images/ecs-service/containers.jpeg)
 
 ## ECS Cluster definition
 

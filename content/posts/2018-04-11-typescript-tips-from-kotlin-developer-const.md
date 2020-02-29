@@ -6,7 +6,7 @@ draft: false
 tags: [TypeScript, Kotlin, const, immutability]
 comments: true
 crosspost: true
-socialImage: ../images/kotlin/kotlin-logo.png
+socialImage: ../../images/kotlin/kotlin-logo.png
 date: 2018-04-11
 ---
 
