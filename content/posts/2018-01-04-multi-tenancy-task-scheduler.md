@@ -6,7 +6,7 @@ draft: false
 tags: [spring, mvc, spring boot, multi-tenant, reactive, reactor]
 comments: true
 crosspost: true
-socialImage: ../../images/multi-tenancy-task-scheduler/sorting.jpg
+socialImage: ../../static/media/multi-tenancy-task-scheduler/sorting.jpg
 date: 2018-01-04 22:14:00
 ---
 
@@ -16,7 +16,7 @@ date: 2018-01-04 22:14:00
 - reject requests after the maximum queue size is reached
 - interrupt processing of a request upon an upstream subscription disposal
 
-![Assigning resources](../../../images/multi-tenancy-task-scheduler/sorting.jpg)
+![Assigning resources](../../static/media/multi-tenancy-task-scheduler/sorting.jpg)
 
 ## Tenant task coordinator execute method
 

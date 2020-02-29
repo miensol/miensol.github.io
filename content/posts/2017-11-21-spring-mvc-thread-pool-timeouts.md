@@ -6,7 +6,7 @@ draft: false
 tags: [spring, mvc, spring boot, thread-pool, timeout]
 comments: true
 crosspost: true
-socialImage: ../../images/thread-pool-timeouts/thread-pool.jpg
+socialImage: ../../static/media/thread-pool-timeouts/thread-pool.jpg
 date: 2017-11-21 22:14:00
 ---
 
@@ -19,7 +19,7 @@ A typical servlet container will use one or more thread pools to handle a reques
 - Undertow: `server.undertow.worker-threads` controlling [`WORKER_TASK_CORE_THREADS`](http://undertow.io/undertow-docs/undertow-docs-1.2.0/listeners.html) with a default of [`availableProcessors() * 8`](https://github.com/undertow-io/undertow/blob/b6a87a4b4a467b297363c46747c344faaee15ded/core/src/main/java/io/undertow/Undertow.java#L419)
 - Jetty: There is no Spring configuration property available currently. One can customize the Jetty Thread Pool through code and jetty specific configuration though. The default maximum number of worker threads is 200.
 
-![Thread pool](../../../images/thread-pool-timeouts/thread-pool.jpg)
+![Thread pool](../../static/media/thread-pool-timeouts/thread-pool.jpg)
 
 ## What happens when the request processing thread pool is empty?
 

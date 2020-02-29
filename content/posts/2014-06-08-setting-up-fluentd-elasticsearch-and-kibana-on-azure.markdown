@@ -119,7 +119,7 @@ Now when you point your browser to `http://machine-dns-name/` you should see kib
 
 You probably don't want anyone to be able to see your logs that's why we need to setup authentication. `kibana-proxy` implements this through Google OAuth - so let's enable it for our installation. First we'll need `APP_ID` (Client ID) and `APP_SECRET` (Client secret) so let's go to [google developer console](https://console.developers.google.com/project) and create a new project. Next we need to enable OAuth for our project in *APIs & auth > Credentials*:
 
-<img src='/images/google_oauth_setup.png'>
+<img src='/static/media/google_oauth_setup.png'>
 
 Make sure *AUTHORIZED REDIRECT URI* looks like `http://machind-dns-name.cloudapp.net/auth/google/callback`. For more secure setup you should be using `https` but for simplicity we'll skip that.
 

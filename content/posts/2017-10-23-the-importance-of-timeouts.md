@@ -11,7 +11,7 @@ date: 2017-10-23 22:14:00
 
 [Timeouts](https://en.wikipedia.org/wiki/Timeout_(computing)) are not an exciting thing to talk about. They do not add immediately perceivable value. They are difficult to ~~guess~~ get right and force one to [consider problems that are hard to solve](https://en.wikipedia.org/wiki/Byzantine_fault_tolerance#Byzantine_Generals.27_Problem). In fact, in my experience, the timeout is only ever considered when our software stops working or is about to. That is an enormous shame since, in my opinion, carefully applied timeouts can vastly improve software resiliency. 
 
-![Man with a wrist clock](../../../images/the-importance-of-timeouts/man-clock.jpeg)
+![Man with a wrist clock](../../static/media/the-importance-of-timeouts/man-clock.jpeg)
 
 ## An example application
 
@@ -78,7 +78,7 @@ The above example has an issue that can kill production server. More importantly
 
 Imagine that the health endpoint is checked every 5 seconds and that there is **intermittent** issue with the SMPT server. The health endpoint will **rightfully** try to connect to the SMTP server and from time to time respond with error. From my experience, when a health check is introduced it typically takes a while to tweak the monitor thresholds so that we get rid of false alarms. It is thus very easy to ignore intermittent errors when we think they are caused by too sensitive thresholds. However, the ignored errors can after a while cause our server to stop responding to **any request**. 
 
-![Man with a wrist clock](../../../images/the-importance-of-timeouts/error.jpg)
+![Man with a wrist clock](../../static/media/the-importance-of-timeouts/error.jpg)
 
 Why this can happen you ask and I answer. **There is no timeout configured!**
 

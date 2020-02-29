@@ -6,13 +6,13 @@ draft: false
 tags: [kotlin, querydsl, hibernate, jpa, database]
 comments: true
 crosspost: true
-socialImage: ../../images/querydsl-tests/test.jpg
+socialImage: ../../static/media/querydsl-tests/test.jpg
 date: 2018-02-12 22:14:00
 ---
 
 Writing tests is an important skill of a software engineer. I used to write lots of very focused, narrow unit tests. However, I often found such tests to hinder refactoring and barely help in catching regressions. Whether such issues were caused by my poor design choices or are intrinsic to unit tests is not the focus of this post. However, the fact is that nowadays I tend to write more coarse-grained, integration style tests. There is one downside to such approach: speed. For instance, using Hibernate with a full fledged database is relatively slow compared to using a fake repository implementation. Today I write about abstracting the database access using [Querydsl](http://www.querydsl.com/) in a way that aids testing.
 
-![test](../../../images/querydsl-tests/test.jpg)
+![test](../../static/media/querydsl-tests/test.jpg)
 
 ## Querydsl is awesome
 

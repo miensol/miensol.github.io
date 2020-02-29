@@ -6,7 +6,7 @@ draft: false
 tags: [aws, cloudformation, lambda, cloudform]
 comments: true
 crosspost: false
-socialImage: ../../images/lambda/lambda.png
+socialImage: ../../static/media/lambda/lambda.png
 date: 2018-03-11
 ---
 
@@ -65,7 +65,7 @@ aws cloudformation create-stack \
 
 The `--capabilities CAPABILITY_IAM` is required whenever the CloudFormation has to define Roles, Policies or related resources. The `--template-body file://<(node_modules/.bin/cloudform aws-template.ts)` instructs CloudFormation to use a template defined in a file. The `<(...)` is [bash and zsh way to pass an output of a command](https://superuser.com/questions/1059781/what-exactly-is-in-bash-and-in-zsh) to other program as if the output was a file. After waiting a bit for the invocation to complete we will see the following in the AWS Console:
 
-![AWS Lambda Screen](../../../images/lambda/aws-console.png)
+![AWS Lambda Screen](../../static/media/lambda/aws-console.png)
 
 It is possible to use the AWS Console editor to test and change the function. However, if we are to treat the serverless approach seriously we should not forget about the standard practices like versioning of our source code.
 

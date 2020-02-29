@@ -6,13 +6,13 @@ draft: false
 tags: [aws, cloudformation, lambda, cloudform]
 comments: true
 crosspost: false
-socialImage: ../../images/express-js.webp
+socialImage: ../../static/media/express-js.webp
 date: 2018-05-29
 ---
 
 In this post we will see how to convert an existing [express](https://expressjs.com/) application to AWS Lambda. This can help reduce AWS bill even by an order of magnitude. We will also use [cloudform](https://github.com/bright/cloudform) to describe the [CloudFormation](https://aws.amazon.com/cloudformation/) stack.
 
-![lambda](../../../images/express-js.webp)
+![lambda](../../static/media/express-js.webp)
 
 ## An express app
 
