@@ -33,7 +33,7 @@ module.exports = {
             telegram: '#',
             twitter: 'miensol',
             github: 'miensol',
-            stackoverflow: '155213/miensol',
+            stackoverflow: 'users/155213/miensol',
             rss: siteUrl + "feed.xml",
             vkontakte: '',
             linkedin: 'piotr-mionskowski-b2858516',
