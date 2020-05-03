@@ -1,13 +1,9 @@
-'use strict';
-
 import { CreateNodeArgs, Node } from "gatsby";
 import { MarkdownRemark } from "../src/types/graphql";
+import { kebabCase } from "lodash";
 
-const _ = require('lodash');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
-const fs = require('fs');
-const path = require('path');
 
 function isMarkdownRemarkNode(node: MarkdownRemark | Node): node is MarkdownRemark{
     return node.internal.type === 'MarkdownRemark'
@@ -60,22 +56,13 @@ export const onCreateNode = ({ node, actions, getNode }: CreateNodeArgs<Markdown
         }
 
         if (node.frontmatter?.tags) {
-            const tagSlugs = node.frontmatter.tags.map((tag) => `/tag/${_.kebabCase(tag)}/`);
+            const tagSlugs = node.frontmatter.tags.map((tag) => `/tag/${kebabCase(tag!)}/`);
             createNodeField({ node, name: 'tagSlugs', value: tagSlugs });
         }
 
         if (node.frontmatter?.category) {
-            const categorySlug = `/category/${_.kebabCase(node.frontmatter.category)}/`;
+            const categorySlug = `/category/${kebabCase(node.frontmatter.category)}/`;
             createNodeField({ node, name: 'categorySlug', value: categorySlug });
-        }
-
-        if (node.frontmatter?.socialImage) {
-            if (!fs.existsSync(path.join(process.cwd(), 'posts', node.frontmatter.socialImage))
-                && !fs.existsSync(path.join(process.cwd(), 'content/pages', node.frontmatter.socialImage))
-                && !fs.existsSync(path.join(process.cwd(), 'content/posts', node.frontmatter.socialImage))
-            ) {
-                console.log('socialImage not found', node.frontmatter)
-            }
         }
     }
 };

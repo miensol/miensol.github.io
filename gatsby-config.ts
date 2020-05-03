@@ -48,7 +48,8 @@ export default {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/posts`,
-        name: "posts"
+        name: "posts",
+        ignore: [`**/node_modules`]
       }
     },
     {
@@ -155,7 +156,22 @@ export default {
             options: { wrapperStyle: "margin-bottom: 1.0725rem" }
           },
           "gatsby-remark-autolink-headers",
-          "gatsby-remark-prismjs",
+          {
+            resolve: "gatsby-remark-embed-snippet",
+            options: {}
+          },
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              languageExtensions: [
+                {
+                  language: "shellscript",
+                  extend: "bash",
+                  definition: {}
+                }
+              ]
+            }
+          },
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
           "gatsby-remark-external-links"
@@ -168,7 +184,7 @@ export default {
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
-        modulePath: `${__dirname}/src/cms/index.js`
+        modulePath: `${__dirname}/src/cms/index.ts`
       }
     },
     {
