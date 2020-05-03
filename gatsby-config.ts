@@ -252,6 +252,14 @@ export default {
         }
       }
     },
-    "gatsby-plugin-optimize-svgs"
+    "gatsby-plugin-optimize-svgs",
+    {
+      resolve: "gatsby-plugin-page-progress",
+      options: {
+        color: "#5D93FF",
+        includePaths: [{ regex: "^/(.+)" }],
+        excludePaths: ["/", {regex: "/page/.*"}]
+      }
+    }
   ]
 };
