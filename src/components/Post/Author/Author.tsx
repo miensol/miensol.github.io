@@ -12,7 +12,7 @@ export const Author = () => {
         {author.bio}
         <a
           className={styles['author__bio-contact']}
-          href={getContactHref('email', author.contacts.twitter)}
+          href={getContactHref('email', author.contacts.email)}
           rel="noopener noreferrer"
           target="_blank"
         >
