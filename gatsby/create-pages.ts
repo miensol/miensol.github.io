@@ -53,27 +53,34 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   const { edges } = result.data!.allMarkdownRemark;
 
   edges.forEach(edge => {
+
+    const nodeFields = edge.node.fields!;
+
+    console.log('nodeFields', nodeFields);
+
     if (edge?.node?.frontmatter?.template === "page") {
       createPage({
-        path: edge.node.fields!.slug!,
+        path: nodeFields.slug!,
         component: path.resolve("./src/templates/page-template.tsx"),
-        context: { slug: edge.node.fields!.slug! }
-      });
-    } else if (edge?.node?.frontmatter?.template === "post") {
-      createPage({
-        path: edge.node.fields!.slug!,
-        component: path.resolve("./src/templates/post-template.tsx"),
-        context: { slug: edge.node.fields!.slug! }
+        context: { slug: nodeFields!.slug! }
       });
     }
 
-    const redirectFrom = edge.node.fields!.redirectFrom;
+    if(edge?.node?.frontmatter?.template === "post") {
+      createPage({
+        path: nodeFields.slug!,
+        component: path.resolve("./src/templates/post-template.tsx"),
+        context: { slug: nodeFields!.slug! }
+      });
+    }
+
+    const redirectFrom = nodeFields!.redirectFrom;
     if (redirectFrom) {
       redirectFrom.forEach(from => {
         createRedirect({
           fromPath: from!,
           isPermanent: true,
-          toPath: edge.node.fields!.slug!,
+          toPath: nodeFields.slug!,
           redirectInBrowser: true
         });
       });
