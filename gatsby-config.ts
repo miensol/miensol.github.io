@@ -260,6 +260,7 @@ export default {
         includePaths: [{ regex: "^/(.+)" }],
         excludePaths: ["/", {regex: "/page/.*"}]
       }
-    }
+    },
+    "gatsby-plugin-meta-redirect"
   ]
 };
