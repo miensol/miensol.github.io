@@ -4,7 +4,7 @@ import { RequiredNotNull } from "./src/types";
 import {
   MarkdownRemarkConnection,
   Query,
-  SiteSiteMetadata
+  SiteSiteMetadata,
 } from "./src/types/graphql";
 
 export const siteMetadata = {
@@ -15,7 +15,7 @@ export const siteMetadata = {
   copyright: siteConfig.copyright,
   disqusShortname: siteConfig.disqusShortname,
   menu: siteConfig.menu,
-  author: siteConfig.author
+  author: siteConfig.author,
 };
 
 export default {
@@ -28,39 +28,39 @@ export default {
         // isTSX: true, // defaults to false
         // jsxPragma: `jsx`, // defaults to "React"
         // allExtensions: true, // defaults to false
-      }
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "assets",
-        path: `${__dirname}/static`
-      }
+        path: `${__dirname}/static`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "css",
-        path: `${__dirname}/static/css`
-      }
+        path: `${__dirname}/static/css`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content/posts`,
         name: "posts",
-        ignore: [`**/node_modules`]
-      }
+        ignore: [`**/node_modules`],
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/content`,
-        name: "content"
-      }
+        name: "content",
+      },
     },
     {
-      resolve: "gatsby-plugin-react-svg"
+      resolve: "gatsby-plugin-react-svg",
     },
     {
       resolve: "gatsby-plugin-feed",
@@ -79,14 +79,14 @@ export default {
         feeds: [
           {
             serialize: ({
-              query: { site, allMarkdownRemark }
+              query: { site, allMarkdownRemark },
             }: {
               query: {
                 site: { siteMetadata: RequiredNotNull<SiteSiteMetadata> };
                 allMarkdownRemark: MarkdownRemarkConnection;
               };
             }) =>
-              allMarkdownRemark.edges.map(edge => {
+              allMarkdownRemark.edges.map((edge) => {
                 const frontmatter = edge.node.frontmatter;
                 const siteMetadata = site.siteMetadata;
                 return {
@@ -97,7 +97,7 @@ export default {
                   date: frontmatter?.date,
                   url: siteMetadata.url! + edge.node!.fields!.slug,
                   guid: siteMetadata.url! + edge.node!.fields!.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }]
+                  custom_elements: [{ "content:encoded": edge.node.html }],
                 };
               }),
             query: `
@@ -127,10 +127,10 @@ export default {
               }
             `,
             output: "/feed.xml",
-            title: siteConfig.title
-          }
-        ]
-      }
+            title: siteConfig.title,
+          },
+        ],
+      },
     },
     {
       resolve: "gatsby-transformer-remark",
@@ -140,25 +140,25 @@ export default {
           {
             resolve: "gatsby-remark-katex",
             options: {
-              strict: "ignore"
-            }
+              strict: "ignore",
+            },
           },
           {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: siteConfig.maxWidth,
               withWebp: true,
-              ignoreFileExtensions: []
-            }
+              ignoreFileExtensions: [],
+            },
           },
           {
             resolve: "gatsby-remark-responsive-iframe",
-            options: { wrapperStyle: "margin-bottom: 1.0725rem" }
+            options: { wrapperStyle: "margin-bottom: 1.0725rem" },
           },
           "gatsby-remark-autolink-headers",
           {
             resolve: "gatsby-remark-embed-snippet",
-            options: {}
+            options: {},
           },
           {
             resolve: "gatsby-remark-prismjs",
@@ -167,16 +167,16 @@ export default {
                 {
                   language: "shellscript",
                   extend: "bash",
-                  definition: {}
-                }
-              ]
-            }
+                  definition: {},
+                },
+              ],
+            },
           },
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
-          "gatsby-remark-external-links"
-        ]
-      }
+          "gatsby-remark-external-links",
+        ],
+      },
     },
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
@@ -184,17 +184,17 @@ export default {
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
-        modulePath: `${__dirname}/src/cms/index.ts`
-      }
+        modulePath: `${__dirname}/src/cms/index.ts`,
+      },
     },
     {
       resolve: "gatsby-plugin-google-gtag",
       options: {
         trackingIds: [siteConfig.googleAnalyticsId],
         pluginConfig: {
-          head: true
-        }
-      }
+          head: true,
+        },
+      },
     },
     {
       resolve: "gatsby-plugin-sitemap",
@@ -221,12 +221,12 @@ export default {
         `,
         output: "/sitemap.xml",
         serialize: ({ site, allSitePage }: RequiredNotNull<Query>) =>
-          allSitePage.edges.map(edge => ({
+          allSitePage.edges.map((edge) => ({
             url: site.siteMetadata!.siteUrl + edge.node.path,
             changefreq: "daily",
-            priority: 0.7
-          }))
-      }
+            priority: 0.7,
+          })),
+      },
     },
     {
       resolve: "gatsby-plugin-manifest",
@@ -237,8 +237,8 @@ export default {
         background_color: "#FFF",
         theme_color: "#F7A046",
         display: "standalone",
-        icon: "static/piotr-bright.png"
-      }
+        icon: "static/piotr-bright.png",
+      },
     },
     "gatsby-plugin-offline",
     "gatsby-plugin-catch-links",
@@ -248,9 +248,9 @@ export default {
       options: {
         postCssPlugins: [...postCssPlugins],
         cssLoaderOptions: {
-          camelCase: false
-        }
-      }
+          camelCase: false,
+        },
+      },
     },
     "gatsby-plugin-optimize-svgs",
     {
@@ -258,9 +258,18 @@ export default {
       options: {
         color: "#5D93FF",
         includePaths: [{ regex: "^/(.+)" }],
-        excludePaths: ["/", {regex: "/page/.*"}]
-      }
+        excludePaths: ["/", { regex: "/page/.*" }],
+      },
     },
-    "gatsby-plugin-meta-redirect"
-  ]
+    "gatsby-plugin-meta-redirect",
+    {
+      resolve: "gatsby-plugin-s3",
+      options: {
+        bucketName: "miensol.pl",
+        protocol: "https",
+        hostname: "miensol.pl",
+        region: "eu-central-1",
+      },
+    },
+  ],
 };
