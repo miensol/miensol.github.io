@@ -3,21 +3,19 @@ template: post
 title: Combine AWS Step Functions with CloudWatch Events using aws-cdk
 tags: [EventBridge, CloudWatch, aws-cdk, "infrastructure as code", aws-cdk]
 socialImage: ./steps.jpg
-date: 2020-05-18
-draft: true
+date: 2020-05-20
 ---
 
 [AWS Step Functions][aws-step-functions] allow one to execute & coordinate **long-running** processes.
-Step Functions are serverless, and the function execution state is managed completely by AWS.
+Step Functions fall into serverless AWS services, and the platform manages the function execution state completely.
 
 In the example below we will use the following AWS services:
 
 - aws-cdk
 - Step Function
-- CloudWatch
 - Lambda
 
-to demonstrate how to implement a long-running workflow.
+The example demonstrates how Step Functions manage execution of a process, which involves external events e.g. human interaction.
 
 ![steps](./steps.jpg)
 
@@ -39,9 +37,6 @@ npm i --save @aws-cdk/aws-stepfunctions \
   @aws-cdk/aws-lambda-nodejs \
   @aws-cdk/aws-dynamodb
 ```
-
-Our step function triggered by a CloudWatch event will wait for another CloudWatch Event.
-The wait will timeout after few minutes. This simulates a workflow where we want to for instance wait for a human to approve some task.
 
 We start with a state machine that contains a single `Wait` step as follows.
 
@@ -80,7 +75,10 @@ After a few moments we can find our brand new AWS Step Function visual represent
 
 In order to make our example more interesting let's add a bit complexity to it.
 Imagine we handle a document flow, which requires two separate actors to sign it off.
-The actors act independently. The first one (Alice) is quick, but the other (Bob) can take a couple of days to process a document.
+
+The actors act independently. The first signer, Alice, signs documents quickly.
+The other, Bob, can take a couple of days to process a document.
+
 Once both actors sign the document our flow succeeds. However, if we do not collect the signatures
 until some time elapses the flow fails.
 
@@ -88,7 +86,7 @@ until some time elapses the flow fails.
 In order for the `@aws-cdk/aws-lambda-nodejs` to work properly you need to have Docker running
 </p>
 
-Alice's part consists of a single task and a lambda function.
+Alice's part consists of a single task along with a lambda function.
 
 ```typescript
 const signDocument = new lambda.NodejsFunction(this, "Sign Document", {
@@ -280,4 +278,18 @@ export const completeSignatureRequest: Handler<{ documentId: string }> = async (
 };
 ```
 
+Let's test the execution by requesting a document with id equal to 3. 
+As expected Alice signs the document after couple of seconds. 
+However, for in order to get Bob's signature we invoke complete signature labmda. 
+This simulates an action that involves human interaction. 
+Note that the whole process could take months to complete! 
+ 
 The AWS Step Function console depicts the current phase of processing pretty neatly.
+`vimeo: https://vimeo.com/420803128`
+
+You can find [full working example in Github repository][github-example].
+
+Leave a comment if you like the article and would like to see more!
+
+[github-example]: https://github.com/miensol/miensol.github.io/tree/develop/content/posts/aws-step-function-with-cloudwatch-events/step-function
+[aws-step-functions]: https://aws.amazon.com/step-functions/

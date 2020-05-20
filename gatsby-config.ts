@@ -136,6 +136,19 @@ export default {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              width: 800,
+              related: false, //Optional: Will remove related videos from the end of an embedded YouTube video.
+              urlOverrides: [
+                {
+                  id: 'youtube',
+                  embedURL: (videoId:string) => `https://www.youtube-nocookie.com/embed/${videoId}`,
+                }
+              ], //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
+            }
+          },
           "gatsby-remark-relative-images",
           {
             resolve: "gatsby-remark-katex",
