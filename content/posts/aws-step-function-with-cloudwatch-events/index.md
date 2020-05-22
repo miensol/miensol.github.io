@@ -280,7 +280,7 @@ export const completeSignatureRequest: Handler<{ documentId: string }> = async (
 
 Let's test the execution by requesting a document with id equal to 3. 
 As expected Alice signs the document after couple of seconds. 
-However, for in order to get Bob's signature we invoke complete signature labmda. 
+However, for in order to get Bob's signature we invoke complete signature lambda. 
 This simulates an action that involves human interaction. 
 Note that the whole process could take months to complete! 
  
