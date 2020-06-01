@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: v13.5.0
+          node-version: v14.3.0
       - run: npm install
       - run: npm run build
       - run: npm run deploy-s3
