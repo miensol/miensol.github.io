@@ -5,10 +5,11 @@
   "main": "n/a",
   "scripts": {
     "ts-gatsby": "ts-node-transpile-only $(which gatsby)",
-    "develop": "npm run ts-gatsby -- develop",
+    "gatsby": "$(which gatsby)",
+    "develop": "npm run gatsby -- develop",
     "clean-develop": "npm run clean && npm run develop",
-    "build": "npm run clean && npm run ts-gatsby -- build",
-    "deploy": "npm run clean && npm run ts-gatsby -- build --prefix-paths && gh-pages -d public",
+    "build": "npm run clean && npm run gatsby -- build",
+    "deploy": "npm run clean && npm run gatsby -- build --prefix-paths && gh-pages -d public",
     "deploy-s3": "gatsby-plugin-s3 deploy",
     "clean": "rimraf .cache public",
     "graphql-codegen": "graphql-codegen",
@@ -44,7 +45,7 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "classnames": "^2.2.6",
-    "gatsby": "=2.21.9",
+    "gatsby": "^2.22.15",
     "gatsby-cli": "^2.12.40",
     "gatsby-link": "^2.4.3",
     "gatsby-plugin-catch-links": "^2.3.3",
