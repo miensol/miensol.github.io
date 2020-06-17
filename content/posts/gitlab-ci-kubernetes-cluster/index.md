@@ -1,6 +1,6 @@
 ---
 template: post
-title: Autoscaling AWS EKS clusterwith custom Gitlab runner configuration
+title: Autoscaling AWS EKS cluster with custom Gitlab runner configuration
 tags:
   [
     aws-cdk,
@@ -11,7 +11,7 @@ tags:
     Kubernetes,
     Gitlab,
   ]
-socialImage: ./gitlab-aws.jpg
+socialImage: ./gitlab-aws.png
 date: 2020-06-17
 ---
 
@@ -28,7 +28,7 @@ In this post we'll use aws-cdk to:
 - install [cluster autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html)
 - install Gitlab runner using [Helm chart](https://docs.gitlab.com/runner/install/kubernetes.html)
 
-![](./gitlab-aws.jpg)
+![](./gitlab-aws.png)
 
 ## Prerequisite
 
@@ -137,7 +137,7 @@ With the above set we can request a certain amount of CPU and memory for build:
 In order for our AWS EKS cluster to scale dynamically we need to install [Cluster autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html).
 With autoscaler installed, whenever the amount of **declared requested** CPU or memory resources exceeds thos available on nodes, a new node will be added to the cluster.
 
-I've wrapped the Cluster autoscaler setup [into aws-cdk construct](http://github.com/miensol/miensol.github.io/blob/master/content/posts/gitlab-ci-kubernetes-cluster/cicd/lib/cluster-autoscaler.ts)
+I've wrapped the Cluster autoscaler setup [into aws-cdk construct](https://github.com/miensol/miensol.github.io/blob/develop/content/posts/gitlab-ci-kubernetes-cluster/cicd/lib/cluster-autoscaler.ts)
 With the `ClusterAutoscaler` construct we can simply enhance our EKS Cluster by adding the following to the `CICDStack` definition:
 
 ```typescript
@@ -169,4 +169,4 @@ NAME                                                              READY   STATUS
 cicdcicdclusterchartgitlabrunnerdXXXXX-gitlab-runner-XXXXXXXXXX   1/1     Running   0          26h
 ```
 
-You can find full working example [under the github repository](http://github.com/miensol/miensol.github.io/blob/master/content/posts/gitlab-ci-kubernetes-cluster/cicd).
+You can find full working example [under the github repository](http://github.com/miensol/miensol.github.io/blob/develop/content/posts/gitlab-ci-kubernetes-cluster/cicd).
