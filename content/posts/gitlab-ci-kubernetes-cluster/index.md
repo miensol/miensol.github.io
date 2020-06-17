@@ -7,6 +7,8 @@ tags:
     "infrastructure as code",
     "Continuous Integration",
     "Continuous Delivery",
+    EKS,
+    Kubernetes,
     Gitlab,
   ]
 socialImage: ./gitlab-aws.jpg
