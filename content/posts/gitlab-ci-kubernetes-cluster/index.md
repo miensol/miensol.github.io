@@ -43,7 +43,7 @@ npm i --save @aws-cdk/aws-eks
 ## Create EKS Cluster with aws-cdk
 
 First we add an AWS EKS cluster with a managed node group.
-[A managed node group](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html) provides a convienient way to provision and manage nodes.
+[A managed node group](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html) provides a convenient way to provision and manage nodes.
 
 ```typescript
 export class CICDStack extends cdk.Stack {
@@ -135,7 +135,7 @@ With the above set we can request a certain amount of CPU and memory for build:
 ## Install Cluster autoscaler using aws-cdk construct
 
 In order for our AWS EKS cluster to scale dynamically we need to install [Cluster autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html).
-With autoscaler installed, whenever the amount of **declared requested** CPU or memory resources exceeds thos available on nodes, a new node will be added to the cluster.
+With autoscaler installed, whenever the amount of **declared requested** CPU or memory resources exceeds those available on nodes, a new node will be added to the cluster.
 
 I've wrapped the Cluster autoscaler setup [into aws-cdk construct](https://github.com/miensol/miensol.github.io/blob/develop/content/posts/gitlab-ci-kubernetes-cluster/cicd/lib/cluster-autoscaler.ts)
 With the `ClusterAutoscaler` construct we can simply enhance our EKS Cluster by adding the following to the `CICDStack` definition:
