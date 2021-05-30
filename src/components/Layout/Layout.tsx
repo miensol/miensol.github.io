@@ -1,23 +1,20 @@
+import { getImage, getSrc, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { Helmet } from "react-helmet";
 import { withPrefix } from "gatsby";
 import { useSiteMetadata } from "../../hooks";
-import { ImageSharp } from "../../types/graphql";
 import * as styles from "./Layout.module.scss";
 
 type Props = {
   children: React.ReactNode;
   title: string;
   description?: string;
-  socialImage?: { childImageSharp: ImageSharp };
+  socialImage?: IGatsbyImageData;
 };
 
 const Layout = ({ children, title, description, socialImage }: Props) => {
   const { author, url } = useSiteMetadata();
-  const metaImage =
-    socialImage != null
-      ? socialImage.childImageSharp?.fluid?.src
-      : author.photo;
+  const metaImage = socialImage ? getSrc(getImage(socialImage)!) : author.photo;
   const metaImageUrl = url + withPrefix(metaImage);
 
   return (

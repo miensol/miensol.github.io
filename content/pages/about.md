@@ -1,15 +1,17 @@
 ---
 title: "About me"
 template: "page"
+slug: /about-me
 ---
 
-Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.
+I help teams build large scale, highly available and performant distributed systems that meet
+demands of modern enterprises.
 
-![Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.](../../static/media/image-2.jpg)
+I believe close collaboration and highly engaged team is a key to top-notch products.
 
-*Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.*
+In my 10+ years of professional experienced I gained a vast and deep technical experience ranging
+from low level programming to system architecture. I know intricacies of mobile application
+development as well as distributed backend, services based systems.
 
-Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
-
-Another change
-Results
+I have a proven track record of leading teams to deliver high quality products that customers love
+using lean and agile methodologies.

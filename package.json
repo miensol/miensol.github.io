@@ -53,6 +53,7 @@
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-plugin-sitemap": "^4.2.0",
     "gatsby-plugin-typescript": "^3.6.0",
+    "gatsby-plugin-image": "^1.6.0",
     "gatsby-remark-autolink-headers": "^4.3.0",
     "gatsby-remark-copy-linked-files": "^4.3.0",
     "gatsby-remark-external-links": "^0.0.4",
@@ -101,5 +102,9 @@
     "@graphql-codegen/cli": "^1.21.5",
     "@graphql-codegen/typescript": "^1.22.1",
     "prettier": "^2.3.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 120
   }
 }
