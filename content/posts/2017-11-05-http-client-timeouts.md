@@ -12,7 +12,7 @@ date: 2017-11-05 22:14:00
 
 We have already touched upon [the importance of timeouts](/the-importance-of-timeouts ) and described most important [related JDBC knobs](/database-timeouts ). The next aspect of timeouts I would like to focus on is using API clients. Specifically HTTP clients which are by far the most popular. We will review couple of popular HTTP client libraries and their configuration regarding timeouts. 
 
-![Waiting](/static/media/http-client-timeouts/waiting.jpg)
+![Waiting](../../static/media/http-client-timeouts/waiting.jpg)
 
 ## HttpURLConnection timeouts
 

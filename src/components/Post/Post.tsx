@@ -8,7 +8,7 @@ import Comments from "./Comments";
 import Content from "./Content";
 import Meta from "./Meta";
 import Tags from "./Tags";
-import styles from "./Post.module.scss";
+import * as styles from "./Post.module.scss";
 
 type Props = {
   post: MarkdownRemark;
@@ -19,12 +19,12 @@ export const Post = ({ post: { html, fields, frontmatter } }: Props) => {
   const { tags, title, date } = frontmatter as RequiredNotNull<MarkdownRemarkFrontmatter>;
 
   return (
-    <div className={styles["post"]}>
-      <Link className={styles["post__home-button"]} to="/">
+    <div>
+      <Link className={styles["post__homeButton"]} to="/">
         All Articles
       </Link>
 
-      <div className={styles["post__content"]}>
+      <div>
         <Content body={html!} title={title} />
       </div>
 

@@ -79,27 +79,27 @@ export default {
         feeds: [
           {
             serialize: ({
-              query: { site, allMarkdownRemark },
-            }: {
+                          query: { site, allMarkdownRemark },
+                        }: {
               query: {
                 site: { siteMetadata: RequiredNotNull<SiteSiteMetadata> };
                 allMarkdownRemark: MarkdownRemarkConnection;
               };
             }) =>
-              allMarkdownRemark.edges.map((edge) => {
-                const frontmatter = edge.node.frontmatter;
-                const siteMetadata = site.siteMetadata;
-                return {
-                  ...frontmatter,
-                  description: frontmatter?.description
-                    ? frontmatter.description
-                    : edge.node.excerpt,
-                  date: frontmatter?.date,
-                  url: siteMetadata.url! + edge.node!.fields!.slug,
-                  guid: siteMetadata.url! + edge.node!.fields!.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
-                };
-              }),
+                allMarkdownRemark.edges.map((edge) => {
+                  const frontmatter = edge.node.frontmatter;
+                  const siteMetadata = site.siteMetadata;
+                  return {
+                    ...frontmatter,
+                    description: frontmatter?.description
+                        ? frontmatter.description
+                        : edge.node.excerpt,
+                    date: frontmatter?.date,
+                    url: siteMetadata.url! + edge.node!.fields!.slug,
+                    guid: siteMetadata.url! + edge.node!.fields!.slug,
+                    custom_elements: [{ "content:encoded": edge.node.html }],
+                  };
+                }),
             query: `
               {
                 allMarkdownRemark(
@@ -144,12 +144,17 @@ export default {
               urlOverrides: [
                 {
                   id: 'youtube',
-                  embedURL: (videoId:string) => `https://www.youtube-nocookie.com/embed/${videoId}`,
+                  embedURL: (videoId: string) => `https://www.youtube-nocookie.com/embed/${videoId}`,
                 }
               ], //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
             }
           },
-          "gatsby-remark-relative-images",
+          {
+            resolve: "gatsby-remark-relative-images",
+            options: {
+              exclude: ['permalink', 'author.image']
+            }
+          },
           {
             resolve: "gatsby-remark-katex",
             options: {
@@ -169,10 +174,6 @@ export default {
             options: { wrapperStyle: "margin-bottom: 1.0725rem" },
           },
           "gatsby-remark-autolink-headers",
-          {
-            resolve: "gatsby-remark-embed-snippet",
-            options: {},
-          },
           {
             resolve: "gatsby-remark-prismjs",
             options: {
@@ -212,33 +213,7 @@ export default {
     {
       resolve: "gatsby-plugin-sitemap",
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl: url
-              }
-            }
-            allSitePage(
-              filter: {
-                path: { regex: "/^(?!/404/|/404.html|/dev-404-page/)/" }
-              }
-            ) {
-              edges {
-                node {
-                  path
-                }
-              }
-            }
-          }
-        `,
-        output: "/sitemap.xml",
-        serialize: ({ site, allSitePage }: RequiredNotNull<Query>) =>
-          allSitePage.edges.map((edge) => ({
-            url: site.siteMetadata!.siteUrl + edge.node.path,
-            changefreq: "daily",
-            priority: 0.7,
-          })),
+        output: "/",
       },
     },
     {

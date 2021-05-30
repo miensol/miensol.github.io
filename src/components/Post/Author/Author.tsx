@@ -1,6 +1,6 @@
 import React from 'react';
 import { getContactHref } from '../../../utils';
-import styles from './Author.module.scss';
+import * as styles from './Author.module.scss';
 import { useSiteMetadata } from '../../../hooks';
 
 export const Author = () => {
@@ -8,10 +8,10 @@ export const Author = () => {
 
   return (
     <div className={styles['author']}>
-      <p className={styles['author__bio']}>
+      <p>
         {author.bio}
         <a
-          className={styles['author__bio-contact']}
+          className={styles['author__bioContact']}
           href={getContactHref('email', author.contacts.email)}
           rel="noopener noreferrer"
           target="_blank"

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { withPrefix } from "gatsby";
 import { useSiteMetadata } from "../../hooks";
 import { ImageSharp } from "../../types/graphql";
-import styles from "./Layout.module.scss";
+import * as styles from "./Layout.module.scss";
 
 type Props = {
   children: React.ReactNode;

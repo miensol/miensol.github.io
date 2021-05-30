@@ -10,10 +10,10 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: v14.3.0
-      - run: npm install
-      - run: npm run build
-      - run: npm run deploy-s3
+          node-version: v15.11.0
+      - run: yarn
+      - run: yarn run build
+      - run: yarn run deploy-s3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -3,7 +3,6 @@ import { MarkdownRemark } from "../src/types/graphql";
 import { kebabCase } from "lodash";
 
 const { createFilePath } = require('gatsby-source-filesystem');
-const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 function isMarkdownRemarkNode(node: MarkdownRemark | Node): node is MarkdownRemark{
     return node.internal.type === 'MarkdownRemark'
@@ -11,8 +10,6 @@ function isMarkdownRemarkNode(node: MarkdownRemark | Node): node is MarkdownRema
 
 export const onCreateNode = ({ node, actions, getNode }: CreateNodeArgs<MarkdownRemark | Node>) => {
     const { createNodeField } = actions;
-
-    fmImagesToRelative(node);
 
     if (isMarkdownRemarkNode(node)) {
         const frontMatterSlug = (node?.frontmatter as any).slug;
