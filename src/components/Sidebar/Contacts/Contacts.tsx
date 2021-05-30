@@ -1,4 +1,5 @@
 // @flow strict
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 import React from 'react';
 import { getContactHref, getIcon } from '../../../utils';
 import Icon from '../../Icon';
@@ -12,17 +13,18 @@ type Props = {
 
 const Contacts = ({ contacts }: Props) => (
   <div className={styles['contacts']}>
+    Contact me
     <ul className={styles['contacts__list']}>
       {Object.keys(contacts).map((name) => (!contacts[name] ? null : (
         <li className={styles['contacts__listItem']} key={name}>
-          <a
+          <OutboundLink
             className={styles['contacts__listItemLink']}
             href={getContactHref(name, contacts[name])}
             rel="noopener noreferrer"
             target="_blank"
           >
             <Icon name={name} icon={getIcon(name)} />
-          </a>
+          </OutboundLink>
         </li>
       )))}
     </ul>

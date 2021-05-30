@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from "gatsby";
 
 const useSiteMetadata = () => {
   const { site } = useStaticQuery(
@@ -11,22 +11,23 @@ const useSiteMetadata = () => {
               bio
               photo
               contacts {
-#                facebook
-                stackoverflow
-                linkedin
-                github
-                twitter
-#                telegram
-#                instagram
+                #                facebook
                 email
+                linkedin
+                twitter
+                github
                 rss
-#                vkontakte
-#                line
-#                gitlab
-#                weibo
-#                codepen
-#                youtube
-#                soundcloud
+                stackoverflow
+                #                telegram
+                #                instagram
+
+                #                vkontakte
+                #                line
+                #                gitlab
+                #                weibo
+                #                codepen
+                #                youtube
+                #                soundcloud
               }
             }
             menu {

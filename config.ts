@@ -14,10 +14,10 @@ export default {
             label: 'Articles',
             path: '/'
         },
-        // {
-        //   label: 'About me',
-        //   path: '/pages/about'
-        // },
+        {
+          label: 'About me',
+          path: '/about-me/'
+        },
         // {
         //   label: 'Contact me',
         //   path: '/pages/contacts'
