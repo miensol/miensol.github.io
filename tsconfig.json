@@ -63,6 +63,13 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "plugins": [{
+      "name": "typescript-plugin-css-modules",
+      "options": {
+        "customMatcher": "\\.module\\.scss$",
+        "classnameTransform": "dashes"
+      }
+    }]
   }
 }

@@ -90,7 +90,8 @@
     "react-helmet": "^6.1.0",
     "lost": "^8.3.1",
     "postcss-pxtorem": "^6.0.0",
-    "autoprefixer": "^10.2.6"
+    "autoprefixer": "^10.2.6",
+    "typescript-plugin-css-modules": "^3.3.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.8",
