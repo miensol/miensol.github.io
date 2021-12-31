@@ -4,7 +4,6 @@ title: 5 Top Programming Books For Junior and Mid-level Developers
 tags: [books, top]
 socialImage: ./books.jpg 
 date: 2021-12-31 
-draft: true
 ---
 
 I encourage everyone to read books. There's so many titles worth
