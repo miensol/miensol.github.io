@@ -14,6 +14,8 @@ recommend every junior and mid-level software engineer should read.
 
 ## [Head First Design Patterns by Eric Freeman, Elisabeth Robson](https://www.amazon.pl/Head-First-Design-Patterns-Object-Oriented/dp/149207800X)
 
+![head first design patterns cover](./head-first.jpeg)
+
 Design pattern surround us everywhere. They are prevalent in every framework and most libraries we
 use. The "Head First Design Patterns" presents most common design patterns in a succinct and easy to
 remember fashion. Before you'll finish the book, you'll already better understand the design choices
@@ -22,6 +24,8 @@ The form of writing that the book uses is especially enjoyable. You'll definitel
 this one.
 
 ## [Clean Architecture by Robert C. Martin](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)
+
+![clean architecture cover](./clean.jpg)
 
 Every book by "Uncle Bob" is worth reading. I've picked the "Clean Architecture" for the list as it
 provides a base and set of pillars with which you can create software services that are easier to
@@ -32,6 +36,8 @@ summarized [in the author's blog post](https://blog.cleancoder.com/uncle-bob/201
 
 ## [Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation by Jez Humbe and David Farley ](https://www.amazon.com/Continuous-Delivery-Deployment-Automation-Addison-Wesley/dp/0321601912)
 
+![continuous delivery cover](./cicd.jpeg)
+
 The book was a hit when it was first published over 10 years ago. If you want to know more about
 Continuous Integration and Continuous Deployment this book is a must-read. It unfolds and explains
 multiple techniques and approaches to improve delivery of software. You'll learn not only what to do
@@ -39,6 +45,8 @@ to improve how you develop software. You'll also learn why some techniques work 
 Such knowledge helps immensely with managing backlog of non-functional features.
 
 ## [Release It!: Design and Deploy Production-Ready Software](https://www.amazon.com/Release-Design-Deploy-Production-Ready-Software/dp/1680502395)
+
+![release it cover](./releaseit.jpg)
 
 Have you ever hears a dreadful story about software system bringing a major enterprise to its knees?
 Have you ever wondered what it takes for a software to be mature and reliable? If so you'll love
