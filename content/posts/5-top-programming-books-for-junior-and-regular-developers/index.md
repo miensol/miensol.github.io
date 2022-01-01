@@ -42,6 +42,16 @@ multiple techniques and approaches to improve the delivery of software. You'll l
 to improve how you develop software. You'll also learn why some techniques work while others don't.
 Such knowledge helps immensely with managing the backlog of non-functional features.
 
+## [Rework](https://www.amazon.com/Rework-Jason-Fried/dp/0307463745)
+
+![rework cover](./rework.jpeg)
+
+The guidance provided by Jason Fried and David Hansson will help you understand a lot on how
+a company can and should work. In my opinion the advice helps in surprising ways. Not only in the context of work! 
+Since pandemic started many of us switched to working from home. 
+The book shares some tips on how a company and more importantly people can work remotely efficiently. 
+
+
 ## [Release It!: Design and Deploy Production-Ready Software](https://www.amazon.com/Release-Design-Deploy-Production-Ready-Software/dp/1680502395)
 
 ![release it cover](./releaseit.jpg)
