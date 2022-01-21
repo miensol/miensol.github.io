@@ -26,7 +26,7 @@ b) service outage
 Preparing a thorough migration plan helps to reduce those risks.
 Losing data was not an option.
 We could also afford only limited degradation of service.
-With a database size of several 100s of GB, any operation isn't instant.
+With a database size of several hundreds of GB, any operation isn't instant.
 It will take a couple of hours just to copy the data.
 The client agreed that it would be ok if the service showed stale data for a couple of minutes.
 
