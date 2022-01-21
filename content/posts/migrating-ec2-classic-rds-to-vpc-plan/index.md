@@ -3,7 +3,7 @@ template: post
 title: Migrate EC2-Classic RDS to a VPC - Planning
 tags: [database, EC2-Classic, AWS-CDK, AWS, RDS]
 socialImage: ./database-files.jpeg
-date: 2022-01-22
+date: 2022-01-21
 ---
 
 By end of August [AWS will shut down EC2-Classic networking](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/).
