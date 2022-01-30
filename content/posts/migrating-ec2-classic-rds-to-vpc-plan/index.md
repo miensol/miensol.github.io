@@ -1,7 +1,9 @@
 ---
-template: post title: Migrate EC2-Classic RDS to a VPC - Planning
+template: post 
+title: Migrate EC2-Classic RDS to a VPC - Planning
 tags: [database, EC2-Classic, AWS-CDK, AWS, RDS]
-socialImage: ./database-files.jpeg date: 2022-01-21
+socialImage: ./database-files.jpeg 
+date: 2022-01-21
 ---
 
 By end of

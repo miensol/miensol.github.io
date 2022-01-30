@@ -1,7 +1,9 @@
 ---
-template: post title: Migrate EC2-Classic RDS to a VPC - Step 1 - Replication
+template: post 
+title: Migrate EC2-Classic RDS to a VPC - Step 1 - Replication
 tags: [database, EC2-Classic, AWS-CDK, AWS, RDS]
-socialImage: ./replica.jpeg date: 2022-01-30
+socialImage: ./replica.jpeg 
+date: 2022-01-30
 ---
 
 In [the last blog post](/blog/migrating-ec2-classic-rds-to-vpc-plan) I sketched a plan to migrate an
