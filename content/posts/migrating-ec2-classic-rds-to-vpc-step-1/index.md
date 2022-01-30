@@ -6,7 +6,7 @@ socialImage: ./replica.jpeg
 date: 2022-01-30
 ---
 
-In [the last blog post](/blog/migrating-ec2-classic-rds-to-vpc-plan) I sketched a plan to migrate an
+In [the last blog post](/migrating-ec2-classic-rds-to-vpc-plan) I sketched a plan to migrate an
 EC2-Classic RDS database to a VPC. It is time to dive into the details of setting up replication. There
 are great blog posts with an in-depth
 explanation [of the SQL and PostgreSQL related aspects](https://www.percona.com/blog/postgresql-logical-replication-using-an-rds-snapshot/)

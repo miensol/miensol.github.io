@@ -64,4 +64,4 @@ the risk further. This is why we've implemented the migration from EC2-Classic t
 
 _In the following posts, I'll share more details on the automation that we've implemented._
 
-1. [Step 1: Replicate database](/blog/migrating-ec2-classic-rds-to-vpc-step-1) 
+1. [Step 1: Replicate database](/migrating-ec2-classic-rds-to-vpc-step-1) 
