@@ -3,7 +3,7 @@ template: post
 title: Migrate EC2-Classic RDS to a VPC - Step 2 - DNS
 tags: [database, EC2-Classic, AWS-CDK, AWS, DNS]
 socialImage: ./dns-generic.png 
-date: 2022-01-01
+date: 2022-05-01
 ---
 
 In [the plan blog post](/migrating-ec2-classic-rds-to-vpc-plan) I sketched a plan to migrate an
