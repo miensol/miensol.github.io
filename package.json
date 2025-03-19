@@ -71,7 +71,7 @@
     "gatsby-plugin-page-progress": "^2.2.0",
     "gatsby-plugin-meta-redirect": "^1.1.1",
     "gatsby-plugin-s3": "^0.3.8",
-    "gatsby-plugin-mdx": "^2.6.0",
+    "gatsby-plugin-mdx": "^2.14.1",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "ts-node": "^10.0.0",
